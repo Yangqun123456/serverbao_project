@@ -24,7 +24,6 @@ signIn.onclick = () => {
         username: username,
         password: password,
     }, async function (data) {
-        data = JSON.parse(data)
         if (data.status == 0) {
             await alertmess('登陆成功')
             location.href = 'http://139.196.139.148:4002/mainpage/?username=' + username
@@ -42,7 +41,6 @@ signUp.onclick = () => {
         password: password,
         email: email,
     }, function (data) {
-        data = JSON.parse(data)
         if (data.status == 0) {
             alertmess('注册成功')
             location.href = 'http://139.196.139.148:4002/mainpage/?username=' + username
