@@ -15,7 +15,7 @@ def classify_function_points(doc_path):
     eq_keywords = ['查询', '搜索', '查找', '查阅', '对接', '接收', '链接',
                    '监管', '推送', '查看', '审核', '管理', '督办', '统计', '分析', '反馈']
     # 初始化
-    ilf_sentences, eif_sentences, ei_sentences, eo_sentences, eq_sentences = [], [], [], [], []
+    sentences = []
     # 读取指定文档
     doc = docx.Document(doc_path)
     # 遍历文档中的段落
@@ -30,17 +30,17 @@ def classify_function_points(doc_path):
             words = list(jieba.cut(text))
             # 判断文本属于哪种功能点分类，并保存相关的句子
             if any(keyword in words for keyword in ilf_keywords):
-                ilf_sentences.append(sentenceElement(text, title))
+                sentences.append(sentenceElement(text, title,'ILF'))
             elif any(keyword in words for keyword in eif_keywords):
-                eif_sentences.append(sentenceElement(text, title))
+                sentences.append(sentenceElement(text, title,'EIF'))
             elif any(keyword in words for keyword in ei_keywords):
-                ei_sentences.append(sentenceElement(text, title))
+                sentences.append(sentenceElement(text, title,'EI'))
             elif any(keyword in words for keyword in eo_keywords):
-                eo_sentences.append(sentenceElement(text, title))
+                sentences.append(sentenceElement(text, title,'EO'))
             elif any(keyword in words for keyword in eq_keywords):
-                eq_sentences.append(sentenceElement(text, title))
+                sentences.append(sentenceElement(text, title,'EQ'))
 
-    return funPoints(ilf_sentences, eif_sentences, ei_sentences, eo_sentences, eq_sentences)
+    return funPoints(sentences)
 
 
 def is_start_with_number_and_dot_and_single_line(string):
@@ -67,8 +67,8 @@ def effortEstimates(funNumber, scaleFactor=1.39, developmentProductivity=7.04, o
 
 def costEstimates(effortElement, location):
     payload = paylaodPerson(location)
-    developmentCost = effortElement.development*payload.development/10000
-    operationsCost = effortElement.operations*payload.operations/10000
+    developmentCost = effortElement.development/8/21.5*payload.development/10000
+    operationsCost = effortElement.operations/8/21.5*payload.operations/10000
     return costElement(developmentCost, operationsCost)
 
 # 更新DOC文档
@@ -78,7 +78,7 @@ def updateDocument(text, doc_path='./app/resource/需求文档.docx'):
     # 创建 Word 文档对象
     doc = docx.Document()
     # 将字符串分割为多个段落，并添加到 Word 文档对象中
-    for paragraph_text in text.split('\r\n'):
+    for paragraph_text in text.split('\n'):
         paragraph = doc.add_paragraph(paragraph_text)
     # 保存 Word 文档
     doc.save(doc_path)

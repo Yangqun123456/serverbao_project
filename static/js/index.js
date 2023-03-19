@@ -36,7 +36,7 @@ signUp.onclick = () => {
     const username = $('#username1').val();
     const password = $('#password1').val();
     const email = $('#email1').val();
-    $.post('http://127.0.0.1:4002/api/reguser/', {
+    $.post('http://127.0.0.1:4002/api/register/', {
         username: username,
         password: password,
         email: email,

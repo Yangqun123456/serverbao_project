@@ -14,24 +14,56 @@ class codeSimElement:
 
 
 class sentenceElement:
-    def __init__(self, content, title):
+    def __init__(self, content, title, type):
         self.content = content
         self.title = title
+        self.type = type
 
 
 class funPoints:
-    def __init__(self, ilfs, eifs, eis, eos, eqs):
-        self.ilfs = ilfs
-        self.eifs = eifs
-        self.eis = eis
-        self.eos = eos
-        self.eqs = eqs
-        self.ilfsNumber = len(ilfs)
-        self.eifsNumber = len(eifs)
-        self.eisNumber = len(eis)
-        self.eosNumber = len(eos)
-        self.eqsNumber = len(eqs)
-        self.funNumber = len(ilfs) + len(eifs) + len(eis) + len(eos) + len(eqs)
+    def __init__(self, elements):
+        self.elements = elements
+        self.ilfsNumber = self.ILF_count()
+        self.eifsNumber = self.EIF_count()
+        self.eisNumber = self.EI_count()
+        self.eosNumber = self.EO_count()
+        self.eqsNumber = self.EQ_count()
+        self.funNumber = len(elements)
+
+    def ILF_count(self):
+        count = 0
+        for element in self.elements:
+            if element.type == "ILF":
+                count += 1
+        return count
+
+    def EIF_count(self):
+        count = 0
+        for element in self.elements:
+            if element.type == "EIF":
+                count += 1
+        return count
+
+    def EI_count(self):
+        count = 0
+        for element in self.elements:
+            if element.type == "EI":
+                count += 1
+        return count
+
+    def EO_count(self):
+        count = 0
+        for element in self.elements:
+            if element.type == "EO":
+                count += 1
+        return count
+
+    def EQ_count(self):
+        count = 0
+        for element in self.elements:
+            if element.type == "EQ":
+                count += 1
+        return count
 
 
 class developmentFactor:

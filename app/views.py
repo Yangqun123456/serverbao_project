@@ -114,8 +114,8 @@ def addSubsystem(request):
         if Subsystem.objects.filter(name=request.POST.get('name'), project_id=request.POST.get('project_id')).first() is not None:
             return JsonResponse({'status': 1, 'message': '项目中已存在该子系统'}, json_dumps_params={'ensure_ascii': False})
         else:
-            Subsystem.objects.create(name=request.POST.get('name'), effort_noadjusted=request.POST.get(
-                'effort_noadjusted'), state=request.POST.get('state'), document=request.POST.get('document'), project_id=request.POST.get('project_id'))
+            Subsystem.objects.create(name=request.POST.get('name'), state=request.POST.get(
+                'state'), document=request.POST.get('document'), project_id=request.POST.get('project_id'))
             return JsonResponse({'status': 0, 'message': '新建子系统成功'}, json_dumps_params={'ensure_ascii': False})
 
 
@@ -156,8 +156,7 @@ def documentAnalyze(request):
             subsystem.state = '分析成功'
             subsystem.save()
             return JsonResponse({'status': 0, 'message': '文档分析成功', 'funNumber': funPoints.funNumber, 'effort': effort.__dict__, 'size': {
-                'ilfs': len(funPoints.ilfs), 'eifs': len(funPoints.eifs), 'eis': len(funPoints.eis), 'eos': len(funPoints.eos), 'eqs': len(funPoints.eqs)}, 'data': {
-                'ilfs': [s.__dict__ for s in funPoints.ilfs], 'eifs': [s.__dict__ for s in funPoints.eifs], 'eis': [s.__dict__ for s in funPoints.eis], 'eos': [s.__dict__ for s in funPoints.eos], 'eqs': [s.__dict__ for s in funPoints.eqs]}}, json_dumps_params={'ensure_ascii': False})
+                'ilfs': funPoints.ilfsNumber, 'eifs': funPoints.eifsNumber, 'eis': funPoints.eisNumber, 'eos': funPoints.eosNumber, 'eqs': funPoints.eqsNumber}, 'data': [s.__dict__ for s in funPoints.elements]}, json_dumps_params={'ensure_ascii': False})
         else:
             return JsonResponse({'status': 1, 'message': '子系统不存在'}, json_dumps_params={'ensure_ascii': False})
 
