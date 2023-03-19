@@ -1,0 +1,8 @@
+boto==2.49.0
+Django==4.1.7
+docx==0.2.4
+jieba==0.42.1
+numpy==1.23.3
+python_bcrypt==0.3.2
+python_docx==0.8.11
+scikit_learn==1.2.2
