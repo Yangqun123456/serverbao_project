@@ -27,8 +27,6 @@ SECRET_KEY = 'django-insecure-z+w+_xa_c&v&&00vupjm_670w^f4)pd_7flx_2cs%!-8(q-8t7
 DEBUG = True
 APPEND_SLASH = False
 ALLOWED_HOSTS = ['139.196.139.148', 'localhost', '0.0.0.0:4002', '127.0.0.1']
-CORS_ORIGIN_ALLOW_ALL = True
-CORS_ALLOW_CREDENTIALS = True
 
 # Application definition
 
@@ -40,11 +38,9 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'app.apps.AppConfig',
-    'corsheaders'
 ]
 
 MIDDLEWARE = [
-    'corsheaders.middleware.CorsMiddleware',
     'django.middleware.security.SecurityMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
     'django.middleware.common.CommonMiddleware',
@@ -134,3 +130,5 @@ STATICFILES_DIRS = [
 # https://docs.djangoproject.com/en/4.1/ref/settings/#default-auto-field
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
+
+
