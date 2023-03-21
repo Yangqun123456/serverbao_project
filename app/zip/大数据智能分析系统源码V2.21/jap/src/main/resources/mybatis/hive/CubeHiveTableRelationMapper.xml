@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.jusfoun.jap.hive.mapper.CubeHiveTableRelationMapper" >
+  <resultMap id="BaseResultMap" type="com.jusfoun.jap.hive.domain.CubeHiveTableRelation" >
+    <!--
+      WARNING - @mbggenerated
+    -->
+    <id column="RELATION_ID" property="relationId" jdbcType="VARCHAR" />
+    <result column="CUBE_ID" property="cubeId" jdbcType="VARCHAR" />
+    <result column="TABLE_ID" property="tableId" jdbcType="VARCHAR" />
+  </resultMap>
+</mapper>

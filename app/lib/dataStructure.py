@@ -1,13 +1,15 @@
 class codeElement:
-    def __init__(self, content, path):
+    def __init__(self, content, path, linecount):
         self.content = content
         self.path = path
+        self.linecount = linecount
 
 
 class codeSimElement:
-    def __init__(self, content, path, sim_content, sim_path, sim_value):
+    def __init__(self, content, path, linecount, sim_content, sim_path, sim_value):
         self.content = content
         self.path = path
+        self.linecount = linecount
         self.sim_content = sim_content
         self.sim_path = sim_path
         self.sim_value = sim_value
@@ -177,3 +179,11 @@ class workEffortFactor:
 
     def adjustEffort(self, development, operations):
         return effortElement(development*self.A*self.IL*self.L*self.T, operations*self.A*self.IL*self.L*self.T)
+
+
+class codeCountElement:
+    def __init__(self, filename, code_lines, comment_lines, blank_lines):
+        self.filename = filename
+        self.code_lines = code_lines
+        self.comment_lines = comment_lines
+        self.blank_lines = blank_lines

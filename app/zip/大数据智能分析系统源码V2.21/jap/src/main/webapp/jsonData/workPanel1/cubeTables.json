@@ -1,0 +1,140 @@
+[{
+  "cubeId":"11",
+  "cubeName" :"cube_test1",
+  "cubeNameCn" : "cube测试表1",
+  "cubeDescription" : "该表用于测试",
+  "cubeDate" : "20160614"
+},
+  {
+    "cubeId":"22",
+    "cubeName" :"cube_test2",
+    "cubeNameCn" : "cube测试表2",
+    "cubeDescription" : "该表用于测试",
+    "cubeDate" : "20160614"
+  },
+  {
+    "cubeId":"33",
+    "cubeName" :"cube_test3",
+    "cubeNameCn" : "cube测试表3",
+    "cubeDescription" : "该表用于测试",
+    "cubeDate" : "20160614"
+  },
+  {
+    "cubeId":"44",
+    "cubeName" :"cube_test4",
+    "cubeNameCn" : "cube测试表4",
+    "cubeDescription" : "该表用于测试",
+    "cubeDate" : "20160614"
+  },
+  {
+    "cubeId":"55",
+    "cubeName" :"cube_test5",
+    "cubeNameCn" : "cube测试表5",
+    "cubeDescription" : "该表用于测试",
+    "cubeDate" : "20160614"
+  },
+  {
+    "cubeId":"66",
+    "cubeName" :"cube_test6",
+    "cubeNameCn" : "cube测试表6",
+    "cubeDescription" : "该表用于测试",
+    "cubeDate" : "20160614"
+  },
+  {
+    "cubeId":"77",
+    "cubeName" :"cube_test7",
+    "cubeNameCn" : "cube测试表7",
+    "cubeDescription" : "该表用于测试",
+    "cubeDate" : "20160614"
+  },
+  {
+    "cubeId":"88",
+    "cubeName" :"cube_test8",
+    "cubeNameCn" : "cube测试表8",
+    "cubeDescription" : "该表用于测试",
+    "cubeDate" : "20160614"
+  },
+  {
+    "cubeId":"99",
+    "cubeName" :"cube_test9",
+    "cubeNameCn" : "cube测试表9",
+    "cubeDescription" : "该表用于测试",
+    "cubeDate" : "20160614"
+  },
+  {
+    "cubeId":"100",
+    "cubeName" :"cube_test10",
+    "cubeNameCn" : "cube测试表10",
+    "cubeDescription" : "该表用于测试",
+    "cubeDate" : "20160614"
+  },
+  {
+    "cubeId":"111",
+    "cubeName" :"cube_test11",
+    "cubeNameCn" : "cube测试表11",
+    "cubeDescription" : "该表用于测试",
+    "cubeDate" : "20160614"
+  },
+  {
+    "cubeId":"222",
+    "cubeName" :"cube_test12",
+    "cubeNameCn" : "cube测试表12",
+    "cubeDescription" : "该表用于测试",
+    "cubeDate" : "20160614"
+  },
+  {
+    "cubeId":"333",
+    "cubeName" :"cube_test13",
+    "cubeNameCn" : "cube测试表13",
+    "cubeDescription" : "该表用于测试",
+    "cubeDate" : "20160614"
+  },
+  {
+    "cubeId":"444",
+    "cubeName" :"cube_test14",
+    "cubeNameCn" : "cube测试表14",
+    "cubeDescription" : "该表用于测试",
+    "cubeDate" : "20160614"
+  },
+  {
+    "cubeId":"555",
+    "cubeName" :"cube_test15",
+    "cubeNameCn" : "cube测试表15",
+    "cubeDescription" : "该表用于测试",
+    "cubeDate" : "20160614"
+  },
+  {
+    "cubeId":"666",
+    "cubeName" :"cube_test16",
+    "cubeNameCn" : "cube测试表16",
+    "cubeDescription" : "该表用于测试",
+    "cubeDate" : "20160614"
+  },
+  {
+    "cubeId":"777",
+    "cubeName" :"cube_test17",
+    "cubeNameCn" : "cube测试表17",
+    "cubeDescription" : "该表用于测试",
+    "cubeDate" : "20160614"
+  },
+  {
+    "cubeId":"888",
+    "cubeName" :"cube_test18",
+    "cubeNameCn" : "cube测试表18",
+    "cubeDescription" : "该表用于测试",
+    "cubeDate" : "20160614"
+  },
+  {
+    "cubeId":"999",
+    "cubeName" :"cube_test19",
+    "cubeNameCn" : "cube测试表19",
+    "cubeDescription" : "该表用于测试",
+    "cubeDate" : "20160614"
+  },
+  {
+    "cubeId":"1000",
+    "cubeName" :"cube_test20",
+    "cubeNameCn" : "cube测试表20",
+    "cubeDescription" : "该表用于测试",
+    "cubeDate" : "20160614"
+  }]

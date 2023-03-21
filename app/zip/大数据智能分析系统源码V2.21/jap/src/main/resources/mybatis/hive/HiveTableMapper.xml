@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.jusfoun.jap.hive.mapper.HiveTableMapper">
+	<resultMap id="BaseResultMap" type="com.jusfoun.jap.hive.domain.HiveTable">
+		<!-- WARNING - @mbggenerated -->
+		<id column="TABLE_ID" jdbcType="VARCHAR" property="tableId" />
+		<result column="TABLE_NAME" jdbcType="VARCHAR" property="tableName" />
+		<result column="TABLE_DESC" jdbcType="VARCHAR" property="tableDesc" />
+	</resultMap>
+
+	<insert id="insertHiveTable" parameterType="com.jusfoun.jap.hive.domain.HiveTable">
+		insert into T_HIVE_TABLE (TABLE_ID,TABLE_NAME,TABLE_DESC)
+		values(#{tableId},#{tableName,jdbcType=VARCHAR},#{tableDesc,jdbcType=VARCHAR})
+	</insert>
+	<select id="findHiveTableByTableId" resultMap="BaseResultMap" parameterType="java.util.Set">
+		select * from T_HIVE_TABLE t1 where t1.TABLE_ID in
+		<foreach item="tableId"  collection="set" open="("
+			separator="," close=")">
+			#{tableId}
+		</foreach>
+	</select>
+</mapper>

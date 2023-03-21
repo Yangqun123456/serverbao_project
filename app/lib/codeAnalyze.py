@@ -3,7 +3,8 @@ import numpy as np
 import shutil
 import zipfile
 import os
-from app.lib.dataStructure import *
+
+from app.lib.dataStructure import codeElement, codeSimElement
 # 读取文件
 
 
@@ -20,10 +21,10 @@ def read_corpus(fname):
             if line != '' and line != '\n' and ~is_only_bracket_or_space(line):
                 temp += line
             if count_lines(temp) >= 10:
-                codeList.append(codeElement(temp, fname))
+                codeList.append(codeElement(temp, fname, count_lines(temp)))
                 temp = ''
             if not line:
-                codeList.append(codeElement(temp, fname))
+                codeList.append(codeElement(temp, fname, count_lines(temp)))
                 return codeList
 
 # 代码相似度分析
@@ -36,7 +37,7 @@ def codeSimAnalyze(cosine_sim, codeList, codeResourceList):
     for i in range(len(maxsim_index)):
         if maxsim_value[i] >= 0.6:
             codeSimList.append(codeSimElement(
-                codeList[i].content, codeList[i].path, codeResourceList[maxsim_index[i]].content, codeResourceList[maxsim_index[i]].path, maxsim_value[i]))
+                codeList[i].content, codeList[i].path, codeList[i].linecount, codeResourceList[maxsim_index[i]].content, codeResourceList[maxsim_index[i]].path, maxsim_value[i]))
     return codeSimList
 
 # 解压zip文件
@@ -53,6 +54,7 @@ def zipDownLoad(file):
 # 遍历文件夹
 
 def traverse_folder(folder_path, file_list):
+    suffixes = {'.java', '.js', '.html', '.css', '.py'}
     for file_name in os.listdir(folder_path):
         file_path = os.path.join(folder_path, file_name)
         if os.path.isdir(file_path):
@@ -60,7 +62,7 @@ def traverse_folder(folder_path, file_list):
             traverse_folder(file_path, file_list)
         else:
             # 如果是文件，判断是否是java文件
-            if file_name.endswith(".java"):
+            if file_name.endswith(tuple(suffixes)):
                 file_list.append(file_path)
 
 # 读取指定文件夹内所有文件

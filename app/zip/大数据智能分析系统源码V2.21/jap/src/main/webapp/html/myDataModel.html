@@ -1,0 +1,71 @@
+<div id="myDataSourceBar"  >
+  <span>当前位置：数据模型&nbsp;</span>
+</div>
+<div id="myDataModule" ng-controller="myDataModelController" >
+	<div id="mds_searchBox">
+		<label style="margin-left: 20%">数据模型名称：</label>
+		<input type="text" ng-model="modelName" style="width:200px;margin-right:20px;"/>
+		<label>是否显示：</label>
+		<select ng-model="modelStatus">
+			<option value="">请选择</option>
+			<option value="1">显示</option>
+			<option value="0">隐藏</option>
+		</select>
+		<center>
+			<button class="red"  ng-click="modelQueryByName()" style="margin-left:20px;">查询</button>
+			<button class="green" ng-click="reSet()">重置</button>
+			<button class="blue" ui-sref="zztzfx.myDataModelAdd">新增</button>
+		</center>
+		<!-- ui-sref="zztzfx.myDataSource_Service" -->
+	</div>
+	<hr/>
+	<div  class="xtgl_listDiv normal_blue"  ng-init="modelQueryByName()">
+         <table>
+			 <thead>
+				 <tr >
+					 <td  width="5%"><input type="checkbox"/></td>
+					 <td  width="10%">序号</td>
+					 <td  width="40%">数据模型名称</td>
+					 <td  width="20%">更新日期</td>
+					 <td  width="20%">操作</td>
+				 </tr>
+			 </thead>
+			 <tbody>
+			 <!--<tr>
+                 <td ><input type="checkbox"/></td>
+                 <td>1</td>
+                 <td>Cube_computer_sales</td>
+                 <td>12016-06-11</td>
+                 <td><select><option>请选择</option><option>查看</option><option>编辑</option></select></td>
+             </tr>
+             <tr>
+                 <td ><input type="checkbox"/></td>
+                 <td>2</td>
+                 <td>Cube_computer_sales</td>
+                 <td>12016-06-11</td>
+                 <td><select><option>请选择</option><option>查看</option><option>编辑</option></select></td>
+             </tr>-->
+			 <tr ng-repeat="model in modelList">
+				  <td><input type="checkbox"/>
+				  <td>{{$index+1}}</td>
+				  <td title = "{{model.cubeDescription}}">{{model.cubeName}}</td>
+				   <td >{{model.cubeDate|date:'yyyy-MM-dd'}}</td>
+				  <td>
+				  		<select  goto-pages>
+				  			<option value="请选择">请选择</option>
+				  			<option  value="查看">查看</option>
+				  			<option ng-if="model.cubeStatus==1" value="删除">删除</option>
+				  			<option ng-if="model.cubeStatus==0" value="恢复">恢复</option>
+<!--  							<option ng-repeat="x in seletedList" value="{{x}}">{{x}}</option> -->
+					  </select>
+				  </td>
+				  </td>
+			 </tr>
+          </tbody>
+      </table>
+ </div>
+ <div class="pager">
+     <div class="blank"></div>
+     <pager page-count="pageCountC" current-page="currentPageC" on-page-change="onPageChangeC()"></pager>
+ </div>
+</div>

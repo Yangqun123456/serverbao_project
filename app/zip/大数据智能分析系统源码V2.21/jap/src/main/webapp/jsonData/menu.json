@@ -1,0 +1,210 @@
+[
+  {
+    "id": 293,
+    "parentId": 0,
+    "text": "领导驾驶舱",
+    "roleMenu": 0,
+    "name": "领导驾驶舱",
+    "href": "home.ldjsc",
+    "showFlag": 1,
+    "permission": "1",
+    "icon":"menuLdjsc"
+  },
+  {
+    "id": 294,
+    "parentId": 0,
+    "children": [
+      {
+        "id": 298,
+        "parentId": 294,
+        "text": "信用信息",
+        "roleMenu": 0,
+        "name": "信用信息",
+        "href": "home.tjfx.xyxx",
+        "showFlag": 1,
+        "permission": "1"
+      },
+      {
+        "id": 301,
+        "parentId": 294,
+        "text": "教育资源",
+        "roleMenu": 0,
+        "name": "教育资源",
+        "href": "home.tjfx.jyzy",
+        "showFlag": 1,
+        "permission": "1"
+      },
+      {
+        "id": 302,
+        "parentId": 294,
+        "text": "生态环境",
+        "roleMenu": 0,
+        "name": "生态环境",
+        "href": "home.tjfx.sthj",
+        "showFlag": 1,
+        "permission": "1"
+      },
+      {
+        "id": 303,
+        "parentId": 294,
+        "text": "产业发展",
+        "roleMenu": 0,
+        "name": "产业发展",
+        "href": "home.tjfx.cyfz",
+        "showFlag": 1,
+        "permission": "1"
+      },
+      {
+        "id": 304,
+        "parentId": 294,
+        "text": "区域经济",
+        "roleMenu": 0,
+        "name": "区域经济",
+        "href": "home.tjfx.qyjj",
+        "showFlag": 1,
+        "permission": "1"
+      },
+      {
+        "id": 305,
+        "parentId": 294,
+        "text": "税收分析",
+        "roleMenu": 0,
+        "name": "税收分析",
+        "href": "home.tjfx.ssfx",
+        "showFlag": 1,
+        "permission": "1"
+      },
+      {
+        "id": 306,
+        "parentId": 294,
+        "text": "市场主体",
+        "roleMenu": 0,
+        "name": "市场主体",
+        "href": "home.tjfx.sczt",
+        "showFlag": 1,
+        "permission": "1"
+      }
+    ],
+    "text": "仪表盘分析",
+    "roleMenu": 0,
+    "name": "仪表盘分析",
+    "href": "home.tjfx.xyxx",
+    "showFlag": 1,
+    "permission": "1",
+    "icon":"menuTjfx"
+  },
+  {
+    "id": 295,
+    "parentId": 0,
+    "text": "自助多维分析",
+    "roleMenu": 0,
+    "name": "自助多维分析",
+    "href": "zztzfx.workPanel",
+    "showFlag": 1,
+    "permission": "1",
+    "icon":"menuZzdwfx"
+  },
+  {
+    "id": 1,
+    "parentId": 0,
+    "children": [
+      {
+        "id": 10,
+        "parentId": 1,
+        "text": "用户管理",
+        "roleMenu": 0,
+        "name": "用户管理",
+        "href": "home.xtgl.yhgl",
+        "showFlag": 1
+      },
+      {
+        "id": 20,
+        "parentId": 1,
+        "text": "菜单管理",
+        "roleMenu": 0,
+        "name": "菜单管理",
+        "href": "home.xtgl.cdgl",
+        "showFlag": 1
+      },
+      {
+        "id": 40,
+        "parentId": 1,
+        "text": "角色管理",
+        "roleMenu": 0,
+        "name": "角色管理",
+        "href": "home.xtgl.jsgl",
+        "showFlag": 1
+      },
+      {
+        "id": 50,
+        "parentId": 1,
+        "text": "日志管理",
+        "roleMenu": 0,
+        "name": "日志管理",
+        "href": "home.xtgl.rzgl",
+        "showFlag": 1,
+        "permission": "sys:log:view"
+      },
+      {
+        "id": 5,
+        "parentId": 1,
+        "text": "组织管理",
+        "roleMenu": 0,
+        "name": "组织管理",
+        "href": "home.xtgl.zzgl",
+        "showFlag": 1,
+        "permission": "sys:organization:view"
+      },
+      {
+        "id": 212,
+        "parentId": 1,
+        "text": "数据模型管理",
+        "roleMenu": 0,
+        "name": "数据模型管理",
+        "href": "home.xtgl.cube",
+        "showFlag": 1,
+        "permission": "sys:cube:view"
+      }
+    ],
+    "text": "系统管理",
+    "roleMenu": 0,
+    "name": "系统管理",
+    "href": "home.xtgl.yhgl",
+    "showFlag": 1,
+    "permission": "1",
+    "icon":"menuXtgl"
+  },
+  {
+    "id": 309,
+    "parentId": 0,
+    "children": [
+      {
+        "id": 310,
+        "parentId": 309,
+        "text": "宏观经济库查询",
+        "roleMenu": 0,
+        "name": "宏观经济库查询",
+        "href": "home.zxcx.hgcx",
+        "showFlag": 1,
+        "permission": "1"
+      },
+      {
+        "id": 311,
+        "parentId": 309,
+        "text": "法人库信息查询",
+        "roleMenu": 0,
+        "name": "法人库信息查询",
+        "href": "home.zxcx.frxx",
+        "showFlag": 1,
+        "permission": "sys:corporation:view"
+      }
+    ],
+    "text": "在线查询",
+    "roleMenu": 0,
+    "name": "在线查询",
+    "href": "home.zxcx.hgcx",
+    "showFlag": 1,
+    "permission": "1",
+    "icon":"menuZxcx"
+  }
+]

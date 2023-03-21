@@ -1,0 +1,56 @@
+<div id="myDataSourceBar">
+    <span>当前位置：数据模型&nbsp;>&nbsp;列中文维护</span>
+</div>
+<div id="myDataSource" ng-controller="chnCtrl">
+<div ng-init="SearchChn()"></div>
+    <div id="mds_searchBox">
+        <label style="margin-left: 20%">数据模型名称：</label>
+        <input type="text" ng-model="cubeName"/>
+        <label>表名：</label>
+        <input type="text" ng-model="tableName"/>
+        <br/>
+        <button style="margin-left: 40%" ng-click="SearchChn()">查询</button>
+        <button ng-click="saveAll()">保存</button>
+        <button ui-sref="zztzfx.myDataSource">返回</button>
+     </div>
+     <hr/>
+        <table>
+	        <thead>
+	        <tr>
+	            <td width="5%">序号</td>
+                <td width="20%">表名</td>
+                <td width="15%">表中文名</td>
+                <td width="20%">列英文名</td>
+                <td width="15%">列中文名</td>
+                <td width="5%">排序</td>
+                <td width="10%">列单位</td>
+                <td width="20%">是否可上卷或下钻</td>
+                <td width="6%">操作</td>
+	        </tr>
+	        </thead>
+	        <tbody>
+	         <tr ng-repeat="CHN in chnList" ng-class="{true: 'normal_blue all_font_color_llG', false: 'light_blue_dl all_font_color_llG'}[($index+1)%2==1]">
+                    <td ng-bind="$index+1">1</td>
+                    <td style="width:150px;" ng-bind="CHN.tableName"></td>
+                    <td ><input   class="all_font_color_llG" style="width:100px;border:1px solid #C9C9C9;background:none;font-family: 'microsoft yahei';" type="text" ng-model=CHN.tableNameCn value="{{CHN.tableNameCn}}"/></td>
+                    <td ng-bind="CHN.tableColumn"></td>
+                    <td ><input   class="all_font_color_llG" style="width:80px;border:1px solid #C9C9C9;background:none;font-family: 'microsoft yahei';" type="text" ng-model=CHN.tableColumnCn value="{{CHN.tableColumnCn}}"/></td>
+                    <td ><input   class="all_font_color_llG" style="width:30px; border:1px solid #C9C9C9;background:none;font-family: 'microsoft yahei';" type="text" ng-model=CHN.columnOrder value="{{CHN.columnOrder}}"/></td>
+                    <td ><input   class="all_font_color_llG" style="width:50px;border:1px solid #C9C9C9;background:none;font-family: 'microsoft yahei';" type="text" ng-model=CHN.measureUnit value="{{CHN.measureUnit}}"/></td>
+                    <td >
+                    	<select style="width:130px;"  class="normal_blue all_font_color_llG" ng-model="CHN.nextFlag">  
+							<option value="">--如需设置请选择--</option>
+							<option value="1">可上卷</option>
+							<option value="2">可下钻</option>
+							<option value="3">既可下钻也可上卷</option>
+						</select>
+                    </td>
+                    <td> <a ng-click="chnglSave(CHN)">保存</a>&nbsp;&nbsp;</td>
+              </tr>
+	        </tbody>
+	    </table>
+			<div class="pager">
+	            <div class="blank"></div>
+	            <pager page-count="pageCountC" current-page="currentPageC" on-page-change="onPageChangeC()"></pager>
+	        </div>
+</div>

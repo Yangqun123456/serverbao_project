@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.jusfoun.jap.hive.mapper.KylinTableColumnMapper" >
+  <resultMap id="BaseResultMap" type="com.jusfoun.jap.hive.domain.KylinTableColumn" >
+    <!--
+      WARNING - @mbggenerated
+    -->
+    <id column="COLUMN_ID" property="columnId" jdbcType="VARCHAR" />
+    <result column="TABLE_ID" property="tableId" jdbcType="VARCHAR" />
+    <result column="COLUMN_NAME" property="columnName" jdbcType="VARCHAR" />
+    <result column="DATE_TYPE" property="dateType" jdbcType="VARCHAR" />
+    <result column="LENGTH" property="length" jdbcType="VARCHAR" />
+    <result column="COLUMN_DESC" property="columnDesc" jdbcType="VARCHAR" />
+    <result column="COLUMN_TYPE" property="columnType" jdbcType="VARCHAR" />
+    <result column="COLUMN_SOURCE" property="columnSource" jdbcType="VARCHAR" />
+    <result column="COMPUTATION_RULES" property="computationRules" jdbcType="VARCHAR" />
+  </resultMap>
+  
+   <insert id="insertKylinTableColumn" parameterType="com.jusfoun.jap.hive.domain.KylinTableColumn" >
+  		insert into T_KYLIN_TABLE_COLUMN (COLUMN_ID,TABLE_ID,COLUMN_NAME,DATE_TYPE,LENGTH,COLUMN_DESC,COLUMN_TYPE,COLUMN_SOURCE,COMPUTATION_RULES) 
+  		values(#{columnId},#{tableId,jdbcType=VARCHAR},#{columnName,jdbcType=VARCHAR},#{dateType,jdbcType=VARCHAR},#{length,jdbcType=VARCHAR},#{columnDesc,jdbcType=VARCHAR},#{columnType,jdbcType=VARCHAR},#{columnSource,jdbcType=VARCHAR},#{computationRules,jdbcType=VARCHAR})
+  </insert>
+  
+    <select id="findHiveTableColumnByTableId" resultMap="BaseResultMap">
+	   select * from T_KYLIN_TABLE_COLUMN t1 where t1.TABLE_ID in
+	 	<foreach item="tableId" index="index" collection="list" open="(" separator="," close=")">  
+	 		 #{tableId}  
+		 </foreach>  
+  </select>
+</mapper>

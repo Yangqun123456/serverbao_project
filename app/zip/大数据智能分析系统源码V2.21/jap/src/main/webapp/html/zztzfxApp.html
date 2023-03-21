@@ -1,0 +1,164 @@
+<!--页头开始-->
+<div id="topMenu_zztz" class="color_red font_colorW">
+    <div id="logo_zztz" class="floatL">
+        <img src="img/zztzfx/logo.png"/>
+        <h1><strong>九次方大数据智能分析平台</strong></h1>
+        <span>V1.0</span>
+    </div>
+
+    <div id="user_zztz" class="floatR">
+        <span><span id="s1" style="font-size: 15px">admin</span>&nbsp;&nbsp;<i class="fa fa-user"></i></span>
+        <span style="margin-right: 30px"><a id="exitButton"><i class="fa fa-sign-out" title="退出"></i></a></span>
+    </div>
+
+    <div id="menu_zztz" class="floatR">
+        <ul header-checked="">
+            <li header-clicked="" id="menu_myTable"  ui-sref="zztzfx.myTable" ><a class="font_colorW">我的作品</a></li>
+            <li header-clicked="" id="menu_workPanel"  ui-sref="zztzfx.workPanel"><a class="font_colorW">数据分析</a></li>
+            <li header-clicked="" id="menu_muyPie" ui-sref="zztzfx.myPie"><a class="font_colorW">仪表盘</a></li>
+            <li header-clicked="" id="menu_myStory" ui-sref="zztzfx.myStory"><a class="font_colorW">专题</a></li>
+            <li header-clicked="" id="menu_myDataSource" ui-sref="zztzfx.myDataSource"><a class="font_colorW">数据模型</a>
+                <!-- <div class="menuRj">
+                    <p ui-sref="zztzfx.myDataSource">数据源</p>
+                    <p ui-sref="zztzfx.myDataModel">数据模型</p>
+                </div> -->
+            </li>
+        </ul>
+
+    </div>
+
+</div>
+<!--页头结束-->
+
+<!--主页面-->
+<div id="main_zztz" class="font_colorB" style="overflow-x:hidden;overflow-y:auto;" ng-app="zztzApp" ui-view="">
+</div>
+<!--主页面结束-->
+
+
+<!--维度筛选框弹出框开始-->
+<div id="tipBoxW" class="displayN">
+    <div id="tipHeaderW">
+        <span id="tipTitleW"></span><span>筛选条件</span>
+    </div>
+    <div id="tipMainW" class="weiduTip">
+        <div id="tipValueW">
+            <label>筛选维度表：</label>
+            <ul></ul>
+        </div>
+        <button class="color_red first" close>确定</button>
+    </div>
+
+</div>
+<!--维度筛选框弹出框结束-->
+
+<!--度量筛选框弹出框开始-->
+<div id="tipBoxD" class="displayN" style="height:auto;">
+    <div id="tipHeaderD">
+        <span id="tipTitleD"></span><span>筛选条件</span>
+    </div>
+    <div id="tipMainD" class="duliangTip">
+        <!-- <div id="tipTab">
+           <div id="tip_tab1" class="active"><span>度量规则</span></div>
+           <div id="tip_tab2"><span>度量范围</span></div>
+        </div> -->
+        <div id="tipValueD1">
+            <label>度量规则：</label>
+            <select id="tipSelect">
+            </select>
+            <br>
+            <label>筛选范围：</label>
+            <input type="text" id="tipStartInput"/> <span>至</span> <input type="text" id="tipEndInput"/>
+        </div>
+       <!--  <div id="tipValueD2" class="displayN">
+            <label>筛选范围：</label>
+            <input type="text" id="tipStartInput"/> <span>至</span> <input type="text" id="tipEndInput"/> 
+        </div>-->
+        <button class="color_red first" close>确定</button>
+    </div>
+
+</div>
+<!--度量筛选框弹出框结束-->
+
+<!-- 保存输入图表名称 -->
+<div id="saveEchartsDiv"  class="displayN">
+    <div id="saveBox">
+        <span>工作表名称：</span>
+        <input type="text" ng-model="saveName"/>
+    </div>
+    <div id="saveB_Div">
+        <button id="saveNo" value="no"  savecharts-click="">取消</button>
+        <button id="saveYes" value="yes"  savecharts-click="">确认</button>
+    </div>
+</div>
+<!-- 保存输入图表名称结束 -->
+
+<!-- 信息提示框 -->
+<div id="messageDiv"  class="displayN">
+    <span></span>
+</div>
+<!-- 信息提示框结束 -->
+
+<script type="text/javascript">
+    var ctx = function() {
+        var path = window.location.href;
+        var pathName = window.location.pathname;
+        var hostPath = path.substring(0, path.indexOf(pathName))
+        var projectName = pathName.substring(0, pathName.substring(1).indexOf('/') + 1);
+        return (hostPath + projectName);
+    }
+    $("#exitButton").click(function(){
+        $.ajax({
+            type : "POST",
+            data:"" ,
+            url : ctx()+"/logout",
+            success : function (data) {
+                /* window.localStorage.href = '{"currentName":"menu_myTable"}'; */
+                window.localStorage.clear();
+                window.location.href=ctx()+"/logon.html";
+            },
+            error:function(data){
+                console.log("Error:"+JSON.stringify(data));
+                /* window.localStorage.href = '{"currentName":"menu_myTable"}'; */
+                window.localStorage.clear();
+                window.location.href=ctx()+"/logon.html";
+            }
+        });
+    });
+    
+    $('.duliangTip').find("#tipTab").children("div").on("click",function(){
+    	$(this).addClass("active");
+    	$(this).siblings("div").removeClass("active");
+    	var number=$(this).attr("id").replace(/[^0-9]/ig, "");
+    	$(this).parent("#tipTab").nextAll("div[id*='tipValueD']").each(function(){
+    		if($(this).attr("id").indexOf(number)>=0){
+    			$(this).removeClass("displayN");
+    			$(this).siblings("div[id*='tipValueD']").addClass("displayN");
+    		}
+    	});
+    })
+    
+    $(document).ready(function () {
+        //事件管理事件注册
+        $("#menu_myDataSource").hover(function(){
+           $(".menuRj").show();
+        },function(){
+           $(".menuRj").hide();
+        });
+        $(".menuRj p").click(function(){
+            $(".menuRj").hide();
+        });
+    	$.ajax({
+            type : "POST",
+            data:"" ,
+            url : ctx()+"/getUserName",
+            success : function (data) {
+            	$("#s1").text(data);
+            },
+            error:function(data){
+                console.log("Error:"+JSON.stringify(data));
+                window.location.href=ctx()+"/logon.html";
+            }
+        });
+	});
+</script>

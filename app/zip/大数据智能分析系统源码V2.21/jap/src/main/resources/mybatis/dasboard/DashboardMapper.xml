@@ -1,0 +1,170 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.jusfoun.jap.dashboard.mapper.DashboardMapper">
+    <resultMap id="DashboardMap" type="com.jusfoun.jap.dashboard.domain.Dashboard">
+        <id column="DASHBOARD_ID" property="id" jdbcType="VARCHAR"/>
+        <result column="DASHBOARD_NAME" property="name" jdbcType="VARCHAR"/>
+        <result column="DASHBOARD_DESCRIPTION" property="description" jdbcType="VARCHAR"/>
+        <result column="user_id" property="userId" jdbcType="VARCHAR"/>
+        <result column="layout" property="layout" jdbcType="VARCHAR"/>
+        <result column="background_Color" property="backgroundColor" jdbcType="VARCHAR"/>
+        <result column="BORDER_SHOW" property="borderShow" jdbcType="VARCHAR"/>
+        <result column="BORDER_COLOR" property="borderColor" jdbcType="VARCHAR"/>
+        <result column="BORDER_WIDTH" property="borderWidth" jdbcType="VARCHAR"/>
+        <result column="table_BORDER_SHOW" property="tableBorderShow" jdbcType="VARCHAR"/>
+        <result column="table_BORDER_COLOR" property="tableBorderColor" jdbcType="VARCHAR"/>
+        <result column="table_BORDER_WIDTH" property="tableBorderWidth" jdbcType="VARCHAR"/>
+        <result column="create_Time" property="createTime" jdbcType="DATE"/>
+        <result column="update_Time" property="updateTime" jdbcType="DATE"/>
+        <result column="TITLE_FONT_SIZE" property="titleFontSize" jdbcType="VARCHAR"/>
+        <result column="TITLE_FONT_WEIGHT" property="titleFontWeight" jdbcType="VARCHAR"/>
+        <result column="TITLE_FONT_COLOR" property="titleFontColor" jdbcType="VARCHAR"/>
+        <result column="TITLE_SHOW" property="titleShow" jdbcType="VARCHAR"/>
+        <result column="theme_id" property="themeId" jdbcType="VARCHAR"/>
+    </resultMap>
+    <select id="getDashboard" resultType="com.jusfoun.jap.dashboard.vo.DashboardVo"
+            parameterType="com.jusfoun.jap.dashboard.domain.Dashboard">
+        select DASHBOARD_ID as id,
+          DASHBOARD_NAME as name,
+          DASHBOARD_DESCRIPTION as description,
+          user_id as userId,
+          create_Time as createTime,
+          update_Time as updateTime,
+          layout as layout,
+          background_Color as backgroundColor,
+          BORDER_SHOW as borderShow,
+          BORDER_COLOR as borderColor,
+          BORDER_WIDTH as borderWidth,
+          TITLE_FONT_SIZE   as titleFontSize ,
+          TITLE_FONT_WEIGHT as titleFontWeight,
+          TITLE_FONT_COLOR  as titleFontColor ,
+          TITLE_SHOW        as titleShow,
+          theme_id          as themeId
+          from t_dashboard where DASHBOARD_ID = #{id}
+  </select>
+
+    <select id="getDashboards" resultMap="DashboardMap" parameterType="com.jusfoun.jap.dashboard.domain.Dashboard">
+        select *
+        from t_dashboard
+        where 1=1
+        and user_id=#{userId}
+        <if test="name != null and name !=''">
+            and DASHBOARD_name like '%${name}%'
+        </if>
+        order by create_Time
+    </select>
+
+    <insert id="createDashboard" parameterType="com.jusfoun.jap.dashboard.vo.DashboardVo">
+  	insert into t_dashboard (dashboard_id,dashboard_name,dashboard_description,user_id,create_Time, update_Time,layout,
+  	background_Color,BORDER_SHOW,BORDER_COLOR,BORDER_WIDTH,TITLE_FONT_SIZE,TITLE_FONT_WEIGHT,TITLE_FONT_COLOR,TITLE_SHOW,theme_id)
+  	 select #{id,jdbcType=VARCHAR},#{name,jdbcType=VARCHAR},#{description,jdbcType=VARCHAR},#{userId,jdbcType=VARCHAR},
+  	 sysdate,sysdate,#{layout,jdbcType=VARCHAR},#{backgroundColor,jdbcType=VARCHAR},#{borderShow,jdbcType=VARCHAR},#{borderColor,jdbcType=VARCHAR}
+  	 ,#{borderWidth,jdbcType=VARCHAR},#{titleFontSize,jdbcType=VARCHAR},#{titleFontWeight,jdbcType=VARCHAR},#{titleFontColor,jdbcType=VARCHAR}
+  	 ,#{titleShow,jdbcType=VARCHAR},#{themeId,jdbcType=VARCHAR} from dual
+  </insert>
+
+    <update id="updateDashboard" parameterType="com.jusfoun.jap.dashboard.domain.Dashboard">
+        update t_dashboard set DASHBOARD_NAME = #{name,jdbcType=VARCHAR} ,
+        DASHBOARD_DESCRIPTION = #{description,jdbcType=VARCHAR},
+        <if test="layout != null and layout !=''">
+            layout = #{layout,jdbcType=VARCHAR},
+        </if>
+        background_Color = #{backgroundColor,jdbcType=VARCHAR},
+        BORDER_SHOW = #{borderShow,jdbcType=VARCHAR},
+        BORDER_COLOR = #{borderColor,jdbcType=VARCHAR},
+        BORDER_WIDTH = #{borderWidth,jdbcType=VARCHAR},
+        TITLE_FONT_SIZE = #{titleFontSize,jdbcType=VARCHAR},
+        TITLE_FONT_COLOR = #{titleFontColor,jdbcType=VARCHAR},
+        TITLE_SHOW = #{titleShow,jdbcType=VARCHAR},
+        TITLE_FONT_WEIGHT = #{titleFontWeight,jdbcType=VARCHAR},
+        theme_id = #{themeId,jdbcType=VARCHAR},
+        user_id = #{userId,jdbcType=VARCHAR},
+        update_time = (select sysdate from dual)
+        where DASHBOARD_ID = #{id,jdbcType=VARCHAR}
+    </update>
+    <delete id="delDashboard" parameterType="com.jusfoun.jap.dashboard.vo.DashboardVo">
+  	delete from t_dashboard where DASHBOARD_ID = #{id,jdbcType=VARCHAR}
+  </delete>
+
+    <select id="selectNames" resultType="java.lang.String" parameterType="com.jusfoun.jap.dashboard.domain.Dashboard">
+	select dashboard_name from  t_dashboard where dashboard_name like '${name}%'
+	</select>
+
+    <select id="getCopyDashboardId" resultType="java.lang.String"
+            parameterType="com.jusfoun.jap.dashboard.domain.Dashboard">
+		select DASHBOARD_ID from  t_dashboard where dashboard_name = #{name}
+	</select>
+
+    <insert id="copyDashboard" parameterType="com.jusfoun.jap.dashboard.domain.Dashboard">
+		insert into t_dashboard (dashboard_id,dashboard_name,dashboard_description,user_id,create_Time, update_Time,layout,
+		background_Color,BORDER_SHOW,BORDER_COLOR,BORDER_WIDTH,TITLE_FONT_SIZE,TITLE_FONT_WEIGHT,TITLE_FONT_COLOR,TITLE_SHOW,theme_id)
+		 select sys_guid(),#{name,jdbcType=VARCHAR},DASHBOARD_DESCRIPTION,#{userId,jdbcType=VARCHAR}
+		 ,sysdate,sysdate,layout,background_Color,BORDER_SHOW,BORDER_COLOR,BORDER_WIDTH,TITLE_FONT_SIZE,TITLE_FONT_WEIGHT,TITLE_FONT_COLOR,TITLE_SHOW,theme_id from t_dashboard where dashboard_id = #{id,jdbcType=VARCHAR}
+	</insert>
+
+    <insert id="copyDashboardWorkRela" parameterType="java.util.Map">
+		insert into t_dashboard_work_rela(rela_id,dashboard_id,work_table_id,work_Table_Order,table_BORDER_SHOW,
+		table_BORDER_COLOR,table_BORDER_WIDTH) select sys_guid(),#{copyId,jdbcType=VARCHAR},work_table_id ,
+		work_Table_Order,table_BORDER_SHOW,table_BORDER_COLOR,table_BORDER_WIDTH
+		from t_dashboard_work_rela where dashboard_id = #{id,jdbcType=VARCHAR}
+	</insert>
+
+    <delete id="delDashboardWorkRela" parameterType="com.jusfoun.jap.dashboard.vo.DashboardVo">
+		delete from t_dashboard_work_rela where dashboard_id = #{id}
+	</delete>
+
+    <insert id="insertDashboardWorkRela" parameterType="com.jusfoun.jap.dashboard.vo.DashboardVo">
+        insert into t_dashboard_work_rela
+        (rela_id,dashboard_id,work_table_id,work_Table_Order,table_BORDER_SHOW,table_BORDER_COLOR,table_BORDER_WIDTH)
+        <foreach close=")" collection="workTables" item="item" index="index" open="(" separator="union">
+            select sys_guid(), #{id},#{item.workTableId},#{item.workTableOrder,jdbcType=INTEGER}
+            ,#{item.tableBorderShow,jdbcType=VARCHAR},#{item.tableBorderColor,jdbcType=VARCHAR},#{item.tableBorderWidth,jdbcType=VARCHAR}
+            from dual
+        </foreach>
+    </insert>
+
+    <select id="queryDashboardbyStory" resultMap="DashboardMap"
+            parameterType="com.jusfoun.jap.dashboard.domain.Dashboard">
+       select 
+       t.dashboard_id,
+       t.dashboard_name,
+       t.dashboard_description,
+       t.user_id,
+       t.create_time,
+       t.update_time,
+       t.layout,
+       db.border_color,
+       db.border_show,
+       t.background_color,
+       t.TITLE_FONT_SIZE,
+       t.TITLE_FONT_WEIGHT,
+       t.TITLE_FONT_COLOR,
+       t.TITLE_SHOW,
+       t.theme_id,
+       db.dashboard_order
+       from t_story_dashboard_rela db, t_dashboard t
+       where db.dashboard_id = t.dashboard_id
+       and db.story_id = #{id}
+       order by db.dashboard_order
+    </select>
+
+    <select id="queryDashboardUsedByStory" resultType="com.jusfoun.jap.story.domain.Story"
+            parameterType="com.jusfoun.jap.dashboard.vo.DashboardVo">
+        select
+        a.STORY_ID as id,
+        a.STORY_NAME as name,
+          a.STORY_DESCRIPTION as description,
+          a.user_id as userId,
+          a.create_Time as createTime,
+          a.update_Time as updateTime,
+          a.layout as layout,
+          a.background_color as backgroundColor
+        from t_story a
+        where a.story_id in(select
+        sd.story_id
+        from t_story_dashboard_rela sd,t_dashboard t
+        where sd.dashboard_id = t.dashboard_id
+        and sd.dashboard_id = #{id})
+    </select>
+
+</mapper>

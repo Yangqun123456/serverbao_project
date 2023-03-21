@@ -1,0 +1,234 @@
+
+
+<!--leftDataDiv start-->
+<div class="leftDataDiv" ng-controller="dataController">
+    <!--left_model start-->
+    <div class="left_model">
+        <div class="left_tab" style="border-top:0px;">
+            <span>数据模型</span>
+        </div>
+        <div ng-init="getTable()" id="left_modelTable" class="left_panel" style="max-height:300px;">
+            <input type="text" ng-model="modelName" class="inputNull" style="margin-bottom:15px" name="" blur/>
+            <div class="searchA"><a class="fa fa-search font_colorB" ng-click="getTable()"></a></div>
+            <p ng-repeat="table in tables" style="text-indent:1em;clear:both"><a ng-bind="table.cubeNameCn" ng-click="change(table)"></a></p>
+          
+        </div>
+    </div>
+    <!--left_model end-->
+
+
+    <!--left_weidu start-->
+    <div class="left_weidu">
+        <div class="left_tab">
+            <span style="color:#cccccc;">维度</span>
+        </div>
+        <div id="left_weiduTable" class="left_panel left_panel_border left_weiduTable" style="height: 0px;">
+            <!--<p ng-repeat="weidu in weiDu" ng-if="weiDu"><i class="fa fa-table"></i>&nbsp;&nbsp;<a class="font_colorB" draggable="" alt="{{weidu}}">{{weidu.tableColumnCn}}</a></p>-->
+            <div ng-repeat="weidu in weiDu" class="weiduTree">
+                <p><i class="fa fa-table"></i>&nbsp;&nbsp;
+                <a ng-if="weidu.tableNameCn!=null" draggable="" class="font_colorB weidu_table"
+                                                             alt="{{weidu}}">{{weidu.tableNameCn}}</a>
+                <a ng-if="weidu.tableNameCn==null" draggable="" class="font_colorB weidu_table"
+                                                             alt="{{weidu}}">{{weidu.tableName}}</a>                                             
+                </p>
+                <p ng-repeat="weiduD in weidu.data" ng-if="weidu">&nbsp;
+                <i ng-class="{true:'tree_line_last',false:'tree_line_normal'}[$last==true]">&nbsp;&nbsp;&nbsp;&nbsp;
+                </i><i class="fa fa-file-text-o"></i>&nbsp;&nbsp;
+                <a class="font_colorB" draggable=""  alt="{{weiduD}}" name="{{weidu.tableName}}" ng-if="weiduD.tableColumnCn!=null">{{weiduD.tableColumnCn}}</a>
+                <a class="font_colorB" draggable=""  alt="{{weiduD}}" name="{{weidu.tableName}}" ng-if="weiduD.tableColumnCn==null">{{weiduD.tableColumn}}</a>
+                </p>
+            </div>
+        </div>
+    </div>
+    <!--left_weidu end-->
+
+    <!--left_duliang start-->
+    <div class="left_duliang">
+        <div class="left_tab">
+            <span style="color:#cccccc;">度量</span>
+        </div>
+        <div id="left_duliangTable" class="left_panel left_duliangTable" style="height: 0px;">
+            <p ng-repeat="duliang in duLiang"><i class="fa fa-file-text-o"></i>&nbsp;&nbsp;
+            <a class="font_colorB"   draggable="" alt="{{duliang}}" ng-if="duliang.tableColumnCn!=null">{{duliang.tableColumnCn}}</a>
+            <a class="font_colorB"   draggable="" alt="{{duliang}}" ng-if="duliang.tableColumnCn==null">{{duliang.tableColumn}}</a>
+            </p>
+        </div>
+    </div>
+    <!--left_duliang end-->
+    <div class="LeadPageTip" style="position:absolute;left:0px;bottom:35px;margin-bottom:0px;">
+        <i class="fa fa-info-circle font_colorB"></i>&nbsp;<a class="font_colorB" ui-sref="zztzfx.LeadPage">使用说明</a>
+    </div>
+</div>
+<!--leftDataDiv end-->
+
+<!--tab start-->
+<div id="tab" class="tabPanel"  ng-controller="tabPanel">
+
+    <!--tab_DIV start-->
+    <div id="tabDIV">
+        <ul>
+            <li class="first">
+                <span class="font_colorB ATab" id="workTableNameInput"  name="">新建数据分析</span>
+               <!-- <a class="fa fa-close font_colorB Aclose" title="关闭"></a> --> 
+            </li>
+            <li class="first">
+                <span class="font_colorB ATab" id="workTableCodeInput"  name=""></span>
+               <!-- <a class="fa fa-close font_colorB Aclose" title="关闭"></a> --> 
+            </li>
+            <!-- 
+            <li>
+                <a id="addTable" class="fa fa-plus font_colorB" title="新增数据分析"></a>
+            </li> -->
+        </ul>
+        <button savecharts="" >保存</button>
+        <button ng-click="newWorkTable()">新建</button>
+        <!-- <button ng-click="exportExcel()">导出数据</button> -->
+        <!-- <button id = "colorSet" class="" ng-click="colorSettings()">设置</button> -->
+        <!-- <button id = "themeColorSet" class="" ng-click="themeColorSettings()" ng-init="getThemeList()">设置主题</button> -->
+                <div class="bg-setting-div">
+                     <ul class="dropdown-menu display-control" id="themeColorId" >
+                     	<li  id="{{theme.themeName}}" ng-repeat="theme in themeList">
+	                	<a  style="display:block;float:left;" ng-click="themeColorPicked(theme)" class="font-color" default-color="#333">
+	                		{{theme.themeName}}</a>
+	                	</li>
+               		 </ul>
+        		</div>
+        
+        <div class="bg-setting-div">
+            <ul class="dropdown-menu display-control" id="colorSelected">
+                <li class="display-control" id="xsColorSelected">
+                	<a color-picker style="display:block;float:left;" ng-click="XsColorPicked()" class="font-color" default-color="#333">
+                		<i class="fa fa-stop" aria-hidden="true"  ng-style="{'color': XsColor}">
+                	</i> x轴颜色</a>
+                </li>
+                <li class="display-control"  id="xwColorSelected">
+                	<a color-picker  style="display:block;float:left;" ng-click="XwColorPicked()" class="font-color" default-color="#333">
+                		<i class="fa fa-stop" aria-hidden="true" ng-style="{'color': XwColor}">
+                	</i> x轴字体颜色</a>
+                </li>
+                <li class="display-control"  id="ysColorSelected">
+                	<a color-picker  style="display:block;float:left;" ng-click="YsColorPicked()" class="font-color" default-color="#333">
+                		<i class="fa fa-stop" aria-hidden="true"  ng-style="{'color': YsColor}">
+                	</i> y轴颜色</a>
+                </li>
+                <li class="display-control"  id="ywColorSelected">
+                	<a color-picker  style="display:block;float:left;" ng-click="YwColorPicked()" class="font-color" default-color="#333">
+                		<i class="fa fa-stop" aria-hidden="true"  ng-style="{'color': YwColor}">
+                	</i> y轴字体颜色</a>
+                </li>
+                <li class="display-control"  id="headerColorSelected">
+                	<a color-picker  style="display:block;float:left;" ng-click="headerColorPicked()" class="font-color" default-color="#333">
+                		<i class="fa fa-stop" aria-hidden="true" ng-style="{'color': headerColor}">
+                	</i> 标题颜色</a>
+                </li>
+                <li class="display-control" id="bodyColorSelected">
+                	<a color-picker  style="display:block;float:left;" ng-click="bodyColorPicked()" class="font-color" default-color="#333">
+                		<i class="fa fa-stop" aria-hidden="true"  ng-style="{'color': bodyColor}">
+                	</i> 字体颜色</a>
+                </li>
+                <li class="display-control" id="tableColorSelected">
+                	<a color-picker  style="display:block;float:left;" ng-click="tableColorPicked()" class="font-color" default-color="#333">
+                		<i class="fa fa-stop" aria-hidden="true"  ng-style="{'color': tableColor}">
+                	</i> 边框颜色</a>
+                </li>
+                <li  id="tableColorSet">
+                	<a  style="display:block;float:left;" ng-click="tableColorSetor()" class="font-color" default-color="#333">
+                		<i class="fa fa-stop" aria-hidden="true"  ng-style="{'color': tableColor}">
+                	</i> 色系调整</a>
+                </li>
+            </ul>
+    	</div>
+    	
+    	<div class="color-setting-div">
+            <ul class="dropdown-menu display-control" id="themeColorSelected">
+                <li  id="{{color}}" ng-repeat="color in themeColor">
+	                	<a color-picker style="display:block;float:left;" ng-click="changeColor($index)" class="font-color" ng-style="{'color': color}">
+	                		<i class="fa fa-stop" aria-hidden="true">
+                	</i> {{color}}</a>
+	            </li>
+            </ul>
+    	</div>
+    </div>
+    
+    <!--tab_DIV end-->
+
+    <!--workPanel01 start-->
+    <div class="workPanel">
+        <!--searchBar start-->
+        <div class="searchBar">
+            <span>维度</span>
+            <div id="weiduDiv"></div>
+            <br/>
+            <span>度量</span>
+            <div id="duliangDiv"></div>
+            <br/>
+            <span>筛选</span>
+            <div id="shaixuanDiv"></div>
+        </div>
+        <!--searchBar end-->
+        <!--showBox start-->
+        <div class="showBox" ng-init="initColor()">
+            <span  style="display:none;"><a id = "clickEchartData" getecharts="">点击开始分析</a></span> 
+            <div id="echartsDiv" class="showPanel"></div>
+        </div>
+        <!--showBox end-->
+    </div>
+    <!--workPanel01 end-->
+
+</div>
+<!--tab end-->
+
+<!--work_tool start-->
+<div class="work_tool">
+     <div class="left_tab" style="border-top:0px;margin-left: 10px">
+        <span>图表类型</span>
+    </div>
+    <div class="tool_panel">
+        <img src="img/chartTypeIcon/table.png" getecharts="" value="table" title="表格"/>
+        <img src="img/chartTypeIcon/line-table.png" getecharts="" value="line" title="线性图"/>
+        <img src="img/chartTypeIcon/bar-table.png" getecharts=""  value="bar" title="柱状图"/>
+        <img src="img/chartTypeIcon/dian_table.png" getecharts=""  value="scatter" title="散点图"/>
+        <img src="img/chartTypeIcon/pie-table_grey.png" getecharts=""  value="pie" title="饼形图"/>
+        <img src="img/chartTypeIcon/pieNull_grey.png" getecharts=""  value="pieNull" title="空心饼形图"/>
+        <!-- <img src="img/chartTypeIcon/crossradio_table_grey.png" getecharts=""  value="crossradio" title="雷达图"/>-->
+        <!-- <img src="img/chartTypeIcon/triangle_table_grey.png"  value="funnel" title="漏斗图"/> -->
+        <img src="img/chartTypeIcon/horizontal_grey.png" getecharts=""  value="horizontal" title="横向图"/>
+        <img src="img/chartTypeIcon/mixTwoDim_grey.png" getecharts=""  value="mixTwoDim" title="两维度双曲线图"/><!-- mixTwoDim(混合图两维度类型)，mixTwoMeasure(混合图两度量类型) -->
+        <img src="img/chartTypeIcon/mixTwoMeasure_grey.png" getecharts=""  value="mixTwoMeasure" title="两度量曲线和柱形图混合"/>
+        <img src="img/chartTypeIcon/triangle_table_grey.png"  getecharts=""  value="mixTowDimLine" title="两维度一度量面积图"/>
+        <img src="img/chartTypeIcon/crossradio_table_grey.png" getecharts=""  value="mixTwoMeasureTwoY" title="两度量曲线和柱形图双Y轴"/>
+        <img src="img/chartTypeIcon/tip_table_grey.png" getecharts=""   value="gauge" title="仪表盘"/>
+        <!-- <img src="img/chartTypeIcon/from_step_grey.png" getecharts=""   value="step" title="同比图"/>  
+        <img src="img/chartTypeIcon/from_step_grey.png" getecharts=""   value="steptext" title="同比纯文本"/> 
+        <img src="img/chartTypeIcon/from_step_grey.png" getecharts=""   value="quadrant" title="象限图"/>
+        <img src="img/chartTypeIcon/from_step_grey.png" getecharts=""   value="float" title="两度量散点图"/> -->
+    </div>
+</div>
+<script type="text/ng-template" id="modalDialogId1">
+    <div class="ngdialog-message">
+        <div style=""><h3>数据分析编码</h3></div>
+		<div><input ng-model="confirmValue" placeholder="请输入数据分析编号,不能为空" /></div>
+    </div>
+    <div class="ngdialog-buttons">
+        <button type="button" class="ngdialog-button ngdialog-button-primary" ng-click="confirm(confirmValue)">确认提交
+        </button>
+        <button type="button" class="ngdialog-button ngdialog-button-secondary" ng-click="closeThisDialog('button')">
+            取消
+        </button>
+    </div>
+</script>
+<script type="text/ng-template" id="modalDialogId">
+    <div class="ngdialog-message">
+        <div style=""><h3>数据分析名称</h3></div>
+		<div><input ng-model="confirmValue" placeholder="请输入数据分析名称,不填默认" /></div>
+    </div>
+    <div class="ngdialog-buttons">
+        <button type="button" class="ngdialog-button ngdialog-button-primary" ng-click="confirm(confirmValue)">确认提交
+        </button>
+        <button type="button" class="ngdialog-button ngdialog-button-secondary" ng-click="closeThisDialog('button')">
+            取消
+        </button>
+    </div>
+</script>
+<!--work_tool end
+<!-- <script src="../js/zztzfx/workPanel.js"></script>-->

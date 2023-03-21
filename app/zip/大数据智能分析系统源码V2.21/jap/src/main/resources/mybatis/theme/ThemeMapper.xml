@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.jusfoun.jap.theme.mapper.ThemeMapper">
+    <resultMap id="ThemeMap" type="com.jusfoun.jap.theme.vo.ThemeVO">
+        <id column="THEME_ID" property="themeId" jdbcType="VARCHAR"/>
+        <result column="theme_name" property="themeName" jdbcType="VARCHAR"/>
+        <result column="dashboard_title" property="dashboardTitle" jdbcType="VARCHAR"/>
+        <result column="dashboard_border" property="dashboardBorder" jdbcType="VARCHAR"/>
+        <result column="dashboard_background" property="dashboardBackground" jdbcType="VARCHAR"/>
+        <result column="story_title" property="storyTitle" jdbcType="VARCHAR"/>
+        <result column="story_border" property="storyBorder" jdbcType="VARCHAR"/>
+        <result column="story_background" property="storyBackground" jdbcType="VARCHAR"/>
+        <result column="theme_color" property="themeColor" jdbcType="VARCHAR"/>
+    </resultMap>
+
+    <select id="getThemeList" resultMap="ThemeMap" parameterType="com.jusfoun.jap.theme.domain.Theme">
+        select *
+        from t_theme
+        where 1=1
+        <if test="themeName != null and themeName !=''">
+            and THEME_NAME like '%${themeName}%'
+        </if>
+        <if test="themeId != null and themeId !=''">
+            and theme_Id = #{themeId}
+        </if>
+        order by theme_order
+    </select>
+
+</mapper>

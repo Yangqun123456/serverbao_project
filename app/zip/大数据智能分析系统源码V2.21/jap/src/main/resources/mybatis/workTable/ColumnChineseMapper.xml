@@ -1,0 +1,400 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.jusfoun.jap.workTable.mapper.ColumnChineseMapper">
+    <resultMap id="CubeResultMap" type="com.jusfoun.jap.workTable.domain.ColumnChinese">
+        <id column="ID" property="id" jdbcType="VARCHAR"/>
+        <result column="COLUMN_NAME" property="tableColumn" jdbcType="VARCHAR"/>
+        <result column="COLUMN_NAME_CN" property="tableColumnCn" jdbcType="VARCHAR"/>
+        <result column="TABLE_NAME_CN" property="tableNameCn" jdbcType="VARCHAR"/>
+        <result column="TABLE_NAME" property="tableName" jdbcType="VARCHAR"/>
+        <result column="DATA_NAME" property="dataName" jdbcType="VARCHAR"/>
+        <result column="MEASURE_UNIT" property="measureUnit" jdbcType="VARCHAR"/>
+        <result column="COLUMN_ORDER" property="columnOrder" jdbcType="INTEGER"/>
+        <result column="next_Flag" property="nextFlag" jdbcType="INTEGER"/>
+        <result column="fact_table_rule" property="factRules" jdbcType="VARCHAR"/>
+    </resultMap>
+
+    <resultMap id="ColumnChineseVo" type="com.jusfoun.jap.workTable.vo.ColumnChineseVo">
+        <result column="TABLE_NAME" property="tableName" jdbcType="VARCHAR"/>
+        <result column="COLUMN_NAME" property="tableColumn" jdbcType="VARCHAR"/>
+        <result column="COLUMN_NAME_CN" property="tableColumnCn" jdbcType="VARCHAR"/>
+        <result column="DATA_NAME" property="dataName" jdbcType="VARCHAR"/>
+        <result column="COLUMN_ORDER" property="columnOrder" jdbcType="INTEGER"/>
+        <result column="next_Flag" property="nextFlag" jdbcType="INTEGER"/>
+    </resultMap>
+
+    <resultMap id="TableChinese" type="com.jusfoun.jap.workTable.vo.TableChinese">
+        <result column="TABLE_NAME" property="tableName" jdbcType="VARCHAR"/>
+        <result column="TABLE_NAME_CN" property="tableNameCn" jdbcType="VARCHAR"/>
+        <collection property="data" ofType="com.jusfoun.jap.workTable.vo.ColumnChineseVo" resultMap="ColumnChineseVo"/>
+    </resultMap>
+
+    <resultMap id="WorkTableMap" type="com.jusfoun.jap.workTable.vo.WorkTableVo">
+        <result column="work_table_id" property="workTableId" jdbcType="VARCHAR"/>
+        <result column="work_table_name" property="workTableName" jdbcType="VARCHAR"/>
+        <result column="work_table_code" property="workTableCode" jdbcType="VARCHAR"/>
+        <result column="Work_table_date" property="workTableDate" jdbcType="DATE"/>
+        <result column="USER_ID" property="userId" jdbcType="VARCHAR"/>
+        <result column="data_type" property="dataType" jdbcType="VARCHAR"/>
+        <result column="cube_id" property="cubeId" jdbcType="VARCHAR"/>
+        <result column="work_table_order" property="workTableOrder" jdbcType="INTEGER"/>
+        <result column="table_border_show" property="tableBorderShow" jdbcType="VARCHAR"/>
+        <result column="table_border_color" property="tableBorderColor" jdbcType="VARCHAR"/>
+        <result column="table_border_width" property="tableBorderWidth" jdbcType="VARCHAR"/>
+		<result column="XsColor" property="xsColor" jdbcType="VARCHAR"/>
+        <result column="XwColor" property="xwColor" jdbcType="VARCHAR"/>
+        <result column="YsColor" property="ysColor" jdbcType="VARCHAR"/>
+        <result column="YwColor" property="ywColor" jdbcType="VARCHAR"/>
+        <result column="table_Color" property="tableColor" jdbcType="VARCHAR"/>
+        <result column="body_Color" property="bodyColor" jdbcType="VARCHAR"/>
+        <result column="header_Color" property="headerColor" jdbcType="VARCHAR"/>
+        <result column="theme_id" property="themeId" jdbcType="VARCHAR"/>
+        <result column="theme_color" property="themeColor" jdbcType="VARCHAR"/>
+    </resultMap>
+
+    <resultMap id="WorkTableDetail" type="com.jusfoun.jap.workTable.vo.WorkTableDetail">
+        <result column="TABLE_TYPE" property="tableType" jdbcType="VARCHAR"/>
+        <result column="WORK_TABLE_ID" property="workTableId" jdbcType="VARCHAR"/>
+        <result column="TABLE_NAME" property="tableName" jdbcType="VARCHAR"/>
+        <result column="table_name_cn" property="tableNameCn" jdbcType="VARCHAR"/>
+        <result column="TABLE_COLUMN" property="tableColumn" jdbcType="VARCHAR"/>
+        <result column="column_name_cn" property="tableColumnCn" jdbcType="VARCHAR"/>
+        <result column="fact_table_rule" property="factTableRule" jdbcType="VARCHAR"/>
+        <result column="rule_name" property="ruleName" jdbcType="VARCHAR"/>
+        <result column="DIM_FACT_FILTERID" property="dimFactFilterId" jdbcType="VARCHAR"/>
+        <result column="LIST_FILTER" property="listFilter" jdbcType="VARCHAR"/>
+        <result column="DIM_Measure_ORDER" property="dimMeasureOrder" jdbcType="INTEGER"/>
+        <result column="next_flag" property="nextFlag" jdbcType="VARCHAR"/>
+        <result column="fact_rules" property="factRules" jdbcType="VARCHAR"/>
+        <result column="chart_Type" property="chartType" jdbcType="VARCHAR"/>
+    </resultMap>
+
+
+    <select id="queryDimByCubeId" resultMap="CubeResultMap" parameterType="com.jusfoun.jap.cube.vo.CubeVo">
+        select c.* from t_cube_info t,t_cube_dim d,t_column_chinese c 
+        where t.cube_id=d.cube_id 
+        and d.dim_table_column=c.column_name 
+        and d.dim_table_name=c.table_name 
+        and t.cube_id=#{cubeId}
+    </select>
+    <select id="queryFactByCubeId" resultMap="CubeResultMap" parameterType="com.jusfoun.jap.cube.vo.CubeVo">
+        select c.*,f.fact_table_rule from t_cube_info t,t_cube_fact f,t_column_chinese c 
+		where t.cube_id=f.cube_id 
+		and f.fact_table_column=c.column_name
+		and f.fact_table_name=c.table_name
+		and t.cube_id=#{cubeId}
+    </select>
+
+    <select id="queryColumnCn" resultMap="CubeResultMap" parameterType="com.jusfoun.jap.workTable.vo.CubeDimVo">
+       select t.column_name_cn as tableColumnCn,
+       t.column_name as tableColumn,t.table_name as tableName,
+       t.measure_unit as measureUnit 
+        from t_column_chinese t where t.column_name = #{tableColumn} and t.table_name = #{tableName}
+    </select>
+
+    <select id="queryDimByCondition" resultType="com.jusfoun.jap.workTable.vo.CubeDimVo"
+            parameterType="com.jusfoun.jap.workTable.vo.CubeDimVo">
+        select d.dim_table_name as tableName,d.dim_table_column as tableColumn,
+        c.column_name_cn as tableColumnCn,d.dim_column_type as dimType
+        from t_cube_dim d,t_column_chinese c 
+		where d.dim_table_column=c.column_name
+		and d.dim_table_name=c.table_name
+		and d.dim_table_name=#{tableName} and d.dim_table_column=#{tableColumn}
+    </select>
+    <select id="getConnectByCubeIdAndTableName" resultType="com.jusfoun.jap.workTable.vo.CubeDimVo"
+            parameterType="com.jusfoun.jap.workTable.vo.ConnectionVO">
+        select distinct t.table_connect_column as tableConnectColumn
+        from t_cube_dim t
+        where 1=1
+        and t.cube_id = #{cubeId}
+        <if test="tableNameList != null">
+            and t.dim_table_name in
+            <foreach item="tableName" index="index" collection="tableNameList" open="(" separator="," close=")">
+                #{tableName}
+            </foreach>
+        </if>
+
+    </select>
+    <select id="getRules" resultType="com.jusfoun.jap.workTable.vo.RuleVO" parameterType="java.util.List">
+        select fact_table_rule as factTableRule,rule_name as ruleName
+        from t_rule t
+        where 1=1
+        and t.fact_table_rule in
+        <foreach item="item" index="index" collection="list" open="(" separator="," close=")">
+            #{item}
+        </foreach>
+    </select>
+    <select id="queryCubeDescriptionByCubeId" resultType="java.lang.String"
+            parameterType="com.jusfoun.jap.cube.vo.CubeVo">
+        select t.cube_description from t_cube_info t
+        where 1=1  
+        and t.cube_id=#{cubeId}
+    </select>
+
+    <insert id="saveWorkTable" parameterType="com.jusfoun.jap.workTable.vo.WorkTableCondition">
+        <if test="workTableId !=null and workTableId !='' and dataType != null and dataType !='' and cubeId != null and cubeId !='' ">
+            insert into t_work_table (WORK_TABLE_ID,WORK_TABLE_NAME,WORK_TABLE_CODE,WORK_TABLE_DATE,USER_ID,DATA_TYPE,CUBE_ID,XsColor,XwColor,YsColor,YwColor,header_Color,body_Color,table_Color,theme_id,theme_color)
+            select #{workTableId}, #{workTableName}, #{workTableCode}, SYSDATE, #{userId,jdbcType=VARCHAR}, #{dataType,jdbcType=VARCHAR}, #{cubeId,jdbcType=VARCHAR}, #{xsColor,jdbcType=VARCHAR}, #{xwColor,jdbcType=VARCHAR}, #{ysColor,jdbcType=VARCHAR}, #{ywColor,jdbcType=VARCHAR}, #{headerColor,jdbcType=VARCHAR}, #{bodyColor,jdbcType=VARCHAR}, #{tableColor,jdbcType=VARCHAR}, #{themeId,jdbcType=VARCHAR}, #{themeColor,jdbcType=VARCHAR} from dual
+        </if>
+    </insert>
+
+    <insert id="saveDimTableDetail" parameterType="com.jusfoun.jap.workTable.vo.WorkTableCondition">
+        INSERT INTO t_work_table_detail
+        (DIM_FACT_FILTERID,WORK_TABLE_ID,TABLE_TYPE,TABLE_NAME,TABLE_COLUMN,LIST_FILTER,DIM_MEASURE_ORDER,FACT_TABLE_RULE)
+        <foreach collection="dimTable" item="item" index="index" separator="union all">
+            select sys_guid(), #{workTableId}, '3', #{item.tableName}, #{item.tableColumn},
+            #{item.listFilter,jdbcType=VARCHAR},
+            #{item.dimMeasureOrder,jdbcType=INTEGER},#{item.factTableRule,jdbcType=VARCHAR} from dual
+        </foreach>
+    </insert>
+
+    <insert id="saveMeasuresDetail" parameterType="com.jusfoun.jap.workTable.vo.WorkTableCondition">
+        INSERT INTO t_work_table_detail
+        (DIM_FACT_FILTERID,WORK_TABLE_ID,TABLE_TYPE,TABLE_NAME,TABLE_COLUMN,LIST_FILTER,DIM_MEASURE_ORDER,FACT_TABLE_RULE,chart_type)
+        <foreach collection="measures" item="item" index="index" separator="union all">
+            select sys_guid(), #{workTableId}, '4', #{item.tableName}, #{item.tableColumn},
+            #{item.listFilter,jdbcType=VARCHAR},
+            #{item.dimMeasureOrder,jdbcType=INTEGER},#{item.factTableRule,jdbcType=VARCHAR},#{item.chartType,jdbcType=VARCHAR}
+            from dual
+        </foreach>
+    </insert>
+
+    <insert id="saveFiltersDetail" parameterType="com.jusfoun.jap.workTable.vo.WorkTableCondition">
+        INSERT INTO t_work_table_detail
+        (DIM_FACT_FILTERID,WORK_TABLE_ID,TABLE_TYPE,TABLE_NAME,TABLE_COLUMN,LIST_FILTER,DIM_MEASURE_ORDER,FACT_TABLE_RULE)
+        <foreach collection="filters" item="item" index="index" separator="union all">
+            select sys_guid(), #{workTableId}, #{item.tableType}, #{item.tableName}, #{item.tableColumn},
+            #{item.listFilter,jdbcType=VARCHAR},
+            #{item.dimMeasureOrder,jdbcType=INTEGER},#{item.factTableRule,jdbcType=VARCHAR} from dual
+        </foreach>
+    </insert>
+
+    <select id="queryWorkTable" resultMap="WorkTableMap" parameterType="com.jusfoun.jap.workTable.vo.WorkTableVo">
+        select * from t_work_table
+        where 1=1
+        and user_id=#{userId}
+        <if test="workTableName !=null and workTableName !=''">
+            and work_table_name like '%${workTableName}%'
+        </if>
+        <if test="workTableCode !=null and workTableCode !=''">
+            and work_table_code like '%${workTableCode}%'
+        </if>
+        order by work_table_date
+    </select>
+
+    <select id="getWorkTable" resultMap="WorkTableMap" parameterType="com.jusfoun.jap.workTable.vo.WorkTableCondition">
+        select * from t_work_table
+        where 1=1 
+        <if test="workTableId !=null and workTableId !=''">
+        	and work_table_Id = #{workTableId}
+        </if>
+        <if test="workTableCode !=null and workTableCode !=''">
+        	and work_table_Code = #{workTableCode}
+        </if>
+    </select>
+
+    <select id="queryWorkTablebyPie" resultMap="WorkTableMap"
+            parameterType="com.jusfoun.jap.dashboard.domain.Dashboard">
+       select 
+       t.work_table_id,
+       t.work_table_name,
+       t.work_table_date,
+       t.user_id,
+       t.data_type,
+       t.cube_id,
+       t.YwColor,
+       t.YsColor,
+       t.XwColor,
+       t.XsColor,
+       t.header_Color,t.body_Color,t.table_Color,
+       dr.*
+  	   from t_dashboard_work_rela dr, t_work_table t
+ 	   where dr.work_table_id = t.work_table_id
+  	   and dr.dashboard_id = #{id}
+  	   order by work_table_order
+    </select>
+
+	<select id="queryWorkTableAllDetail" resultMap="WorkTableDetail" parameterType="com.jusfoun.jap.workTable.vo.WorkTableCondition">
+        select td.table_name , cc.table_name_cn,td.table_column,cc.column_name_cn,cf.fact_table_rule as fact_rules,td.fact_table_rule,
+        td.fact_table_rule,tr.rule_name,td.list_filter,td.table_type,td.chart_Type
+  		from t_work_table_detail td left join t_column_chinese cc 
+  		on td.table_name = cc.table_name and td.table_column = cc.column_name
+  		left join t_work_table t on td.work_table_id = t.work_table_id 
+  		left join t_rule tr on tr.fact_table_rule = td.fact_table_rule
+  		left join t_cube_fact cf on cf.fact_table_name = td.table_name and cf.fact_table_column = td.table_column and cf.cube_id = t.cube_id
+  		where 1=1 
+  		<if test="workTableId !=null and workTableId !=''">
+  		and td.work_table_id = #{workTableId,jdbcType=VARCHAR} 
+  		</if>
+  		<if test="workTableCode !=null and workTableCode !=''">
+  		and t.work_table_code = #{workTableCode,jdbcType=VARCHAR} 
+  		</if>
+  		order by td.dim_measure_order
+    </select>
+
+    <select id="queryWorkTableDimList" resultMap="WorkTableDetail"
+            parameterType="com.jusfoun.jap.workTable.vo.WorkTableCondition">
+        select td.table_name , cc.table_name_cn,td.table_column,cc.column_name_cn,td.fact_table_rule,
+        td.fact_table_rule,tr.rule_name,td.list_filter,td.table_type,cc.next_flag
+  		from t_work_table_detail td left join t_column_chinese cc 
+  		on td.table_name = cc.table_name and td.table_column = cc.column_name
+  		left join t_rule tr on tr.fact_table_rule = td.fact_table_rule
+  		where table_type = '3' and td.work_table_id = #{workTableId,jdbcType=VARCHAR} order by td.dim_measure_order
+    </select>
+    
+    <select id="queryWorkTablemeasureList" resultMap="WorkTableDetail"
+            parameterType="com.jusfoun.jap.workTable.vo.WorkTableCondition">
+       select td.table_name , cc.table_name_cn,td.table_column,cc.column_name_cn,cf.fact_table_rule as fact_rules,td.fact_table_rule,
+        td.fact_table_rule,tr.rule_name,td.list_filter,td.table_type,td.chart_Type
+  		from t_work_table_detail td left join t_column_chinese cc 
+  		on td.table_name = cc.table_name and td.table_column = cc.column_name
+  		left join t_work_table t on td.work_table_id = t.work_table_id 
+  		left join t_rule tr on tr.fact_table_rule = td.fact_table_rule
+  		left join t_cube_fact cf on cf.fact_table_name = td.table_name and cf.fact_table_column = td.table_column and cf.cube_id = t.cube_id
+  		where table_type = '4' and td.work_table_id = #{workTableId,jdbcType=VARCHAR} order by td.dim_measure_order
+    </select>
+    <select id="queryWorkTablefilterList" resultMap="WorkTableDetail"
+            parameterType="com.jusfoun.jap.workTable.vo.WorkTableCondition">
+       select td.table_name , cc.table_name_cn,td.table_column,cc.column_name_cn,cf.fact_table_rule as fact_rules,
+        td.fact_table_rule,tr.rule_name,td.list_filter,td.table_type
+  		from t_work_table_detail td left join t_column_chinese cc 
+  		on td.table_name = cc.table_name and td.table_column = cc.column_name
+  		left join t_rule tr on tr.fact_table_rule = td.fact_table_rule
+  		left join t_cube_fact cf on cf.fact_table_name = td.table_name and cf.fact_table_column = td.table_column
+  		where table_type in('1','2') and td.work_table_id = #{workTableId,jdbcType=VARCHAR} order by td.dim_measure_order
+    </select>
+
+    <select id="queryFactTableRule" resultType="java.lang.String" parameterType="com.jusfoun.jap.workTable.vo.Measures">
+        select fact_table_rule from T_CUBE_FACT where 
+        fact_table_name = #{measuresTableName,jdbcType=VARCHAR} and fact_table_column = #{measuresColumn,jdbcType=VARCHAR}
+    </select>
+
+    <select id="getColumnChinese" parameterType="com.jusfoun.jap.workTable.domain.ColumnChinese"
+            resultMap="CubeResultMap">
+        select chn.* from t_column_chinese chn where 1=1
+        <if test="cubeName !=null and cubeName !=''">
+            and chn.table_name in (select s.tablename from
+            (select cd.dim_table_name as tableName,cd.cube_id as cubeid from t_cube_dim cd
+            union
+            select cf.fact_table_name as tableName,cf.cube_id as cubeid from t_cube_fact cf) s,
+            t_cube_info ci where s.cubeid = ci.cube_id
+            and (ci.cube_name_cn like '${cubeName}%' or ci.cube_name like '${cubeName}%') )
+        </if>
+        <if test="tableName !=null and tableName !=''">
+            and (chn.table_name_cn like '${tableName}%' or chn.table_name like '${tableName}%')
+        </if>
+        order by chn.table_name,chn.column_order
+    </select>
+
+    <update id="updateColumnChinese" parameterType="com.jusfoun.jap.workTable.domain.ColumnChinese">
+    	update t_column_chinese t set t.column_name_cn =#{tableColumnCn,jdbcType=VARCHAR},
+    	t.table_name_cn =#{tableNameCn,jdbcType=VARCHAR},t.column_order = #{columnOrder,jdbcType=INTEGER},
+    	t.next_flag = #{nextFlag,jdbcType=INTEGER},
+       t.MEASURE_UNIT =#{measureUnit,jdbcType=VARCHAR} where t.id=#{id}
+    </update>
+
+    <delete id="deleteWorkTableDetail" parameterType="java.lang.String">
+        <if test="_parameter != null and _parameter !=''">
+            delete from t_work_table_detail where work_table_id = #{_parameter}
+        </if>
+    </delete>
+
+    <delete id="deleteDashTabRale" parameterType="java.lang.String">
+        <if test="_parameter != null and _parameter !=''">
+            delete from t_dashboard_work_rela where work_table_id = #{_parameter}
+        </if>
+    </delete>
+
+    <delete id="deleteWorkTable" parameterType="java.lang.String">
+        <if test="_parameter != null and _parameter !=''">
+            delete from t_work_table where work_table_id = #{_parameter}
+        </if>
+    </delete>
+
+    <update id="updateWorkTable" parameterType="com.jusfoun.jap.workTable.vo.WorkTableCondition">
+    	update t_work_table set 
+    	work_table_name = #{workTableName,jdbcType=VARCHAR},
+    	user_id = #{userId,jdbcType=VARCHAR},
+    	data_type = #{dataType,jdbcType=VARCHAR},
+    	cube_id = #{cubeId,jdbcType=VARCHAR},
+    	XsColor = #{xsColor,jdbcType=VARCHAR},
+    	XwColor = #{xwColor,jdbcType=VARCHAR},
+    	YsColor = #{ysColor,jdbcType=VARCHAR},
+    	YwColor = #{ywColor,jdbcType=VARCHAR},
+    	table_Color = #{tableColor,jdbcType=VARCHAR},
+    	body_Color = #{bodyColor,jdbcType=VARCHAR},
+    	header_Color = #{headerColor,jdbcType=VARCHAR},
+    	theme_id = #{themeId,jdbcType=VARCHAR},
+    	theme_color = #{themeColor,jdbcType=VARCHAR},
+    	work_table_date = (select sysdate from dual)
+    	where work_table_id = #{workTableId,jdbcType=VARCHAR}
+    </update>
+
+    <update id="updateTableChinese" parameterType="com.jusfoun.jap.workTable.domain.ColumnChinese">
+    	update t_column_chinese t set 
+    	t.table_name_cn =#{tableNameCn,jdbcType=VARCHAR} where t.table_name=#{tableName}
+    </update>
+    <select id="queryDimListByCubeId" resultMap="TableChinese" parameterType="com.jusfoun.jap.cube.vo.CubeVo">
+       select c.* from t_cube_info t,t_cube_dim d,t_column_chinese c 
+        where t.cube_id=d.cube_id 
+        and d.dim_table_column=c.column_name 
+        and d.dim_table_name=c.table_name 
+        and t.cube_id=#{cubeId}
+        order by d.dim_table_name,c.column_order
+    </select>
+
+    <select id="selectNames" resultType="java.lang.String" parameterType="com.jusfoun.jap.workTable.vo.WorkTableVo">
+		select work_table_name from  t_work_table where work_table_name like '${workTableName}%'
+	</select>
+
+    <insert id="copyWorkTable" parameterType="com.jusfoun.jap.workTable.vo.WorkTableVo">
+  	insert into t_work_table (WORK_TABLE_ID,WORK_TABLE_NAME,WORK_TABLE_code,WORK_TABLE_DATE,USER_ID,DATA_TYPE,CUBE_ID,xscolor,xwcolor,ywcolor,yscolor,HEADER_COLOR,BODY_COLOR,TABLE_COLOR) 
+  	select sys_guid(),#{workTableName,jdbcType=VARCHAR},#{workTableCode,jdbcType=VARCHAR}
+  	,sysdate,USER_ID,data_type,cube_id,xscolor,xwcolor,ywcolor,yscolor,HEADER_COLOR,BODY_COLOR,TABLE_COLOR
+  	from t_work_table where work_table_id = #{workTableId,jdbcType=VARCHAR}
+  	</insert>
+
+    <select id="getCopyWorkTableId" resultType="java.lang.String"
+            parameterType="com.jusfoun.jap.workTable.vo.WorkTableVo">
+		select work_table_ID from  t_work_table where work_table_name = #{workTableName}
+	</select>
+
+
+    <insert id="copyWorktableDetail" parameterType="java.util.Map">
+		insert into t_work_table_detail (DIM_FACT_FILTERID,WORK_TABLE_ID,TABLE_TYPE,TABLE_NAME,TABLE_COLUMN,LIST_FILTER
+		,DIM_MEASURE_ORDER,FACT_TABLE_RULE,chart_Type)
+		select sys_guid(),#{copyId,jdbcType=VARCHAR},table_type,table_name,
+		table_column,list_filter,dim_measure_order ,FACT_TABLE_RULE,chart_Type
+		from t_work_table_detail where work_table_ID = #{id,jdbcType=VARCHAR}
+	</insert>
+
+    <select id="getPieNames" resultType="java.lang.String" parameterType="com.jusfoun.jap.workTable.vo.WorkTableVo">
+		 select d.dashboard_name from t_dashboard d left join t_dashboard_work_rela dw on d.dashboard_id = dw.dashboard_id where dw.work_table_id = #{workTableId}
+	</select>
+	
+	<select id="queryWorkTableList" resultMap="WorkTableMap"
+            parameterType="java.util.List">
+       select 
+       t.work_table_id,
+       t.work_table_name,
+       t.work_table_date,
+       t.user_id,
+       t.data_type,
+       t.cube_id,
+       t.YwColor,
+       t.YsColor,
+       t.XwColor,
+       t.XsColor,
+       t.header_Color,t.body_Color,t.table_Color
+  	   from  t_work_table t
+ 	   where t.work_table_id  in
+		<foreach item="item" index="index" collection="list" open="(" separator="," close=")">
+            #{item.workTableId}
+        </foreach>
+    </select>
+    
+    <select id="checkWorkTableCode" resultType="java.lang.Integer"  parameterType="com.jusfoun.jap.workTable.vo.WorkTableCondition">
+        select count(1) from t_work_table
+        where  work_table_code = #{workTableCode}
+    </select>
+</mapper>

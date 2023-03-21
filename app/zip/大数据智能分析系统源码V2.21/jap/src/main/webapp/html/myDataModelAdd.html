@@ -1,0 +1,274 @@
+
+<style>
+ #topMenu_zztz{
+    position:static;
+ }
+  .leftDataDiv {
+     float:left;
+     position:static;
+     width:16%;
+  }
+  .tabPanel{
+    position:static;
+    float:left;
+    height:auto;
+    margin:0;
+    width:82%;
+    margin:0 1%;
+    padding-top:0.5%;
+    box-sizing:border-box;
+
+
+  }
+  #main_zztz{
+     position:static;
+  }
+  .workPanel{
+     height:auto;
+     position:static;
+  }
+  #tabDIV{
+     border-bottom:none;
+  }
+  .left_model > .left_panel{
+     box-sizing:border-box;
+     padding-left:5px;
+  }
+</style>
+<!--leftDataDiv start-->
+<div class="leftDataDiv" ng-controller="dataAddLeftController">
+    <!--left_model start-->
+    <div class="left_model">
+        <div class="left_tab" style="border-top:0px;">
+            <span>数据源</span>
+        </div>
+        <div ng-init="queryHiveTable()" id="left_modelTable" class="left_panel" style="max-height:20px;">
+            <input type="text" ng-model="tableName" class="inputNull" style="margin-bottom:15px" name="" blur/>
+            <div class="searchA"><a class="fa fa-search font_colorB" ng-click="queryHiveTable()"></a></div>
+
+        </div>
+        <div class="tableDataList">
+
+            <div class="singleTable" ng-repeat="zdObj in leftTree">
+                <span style="padding-left:20px" ng-click="ssClick($event,zdObj.tableName,$index)" id="{{zdObj.tableName}}">{{zdObj.tableName}}</span>
+                <ul style="display: none;">
+                    <li ng-repeat = "zd in zdObj.columns">
+                        <a  id="{{zdObj.tableName}}{{zd.columnName}}" href="javascript:void(0)" name="{{zd.columnName}};{{zd.dataType}}" dragable>{{zd.columnName}}({{zd.dataType}})</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </div>
+    <!--left_model end-->
+</div>
+<!--leftDataDiv end-->
+
+<!--tab start-->
+<div id="tab" class="tabPanel" ng-controller="dataAddController">
+
+    <!--tab_DIV start-->
+    <div id="tabDIV">
+        <ul>
+            <li class="first">
+                <span class="font_colorB ATab" id="workTableNameInput"  name="">新增数据模型</span>
+            </li>
+        </ul>
+        <button ng-click="save()">确认</button>
+        <button class="gray" ng-click="goPage()">取消</button>
+    </div>
+    <!--tab_DIV end-->
+
+    <!--content start-->
+    <div class="workPanel">
+        <div class="splitNr">
+             <table class="sryTable">
+                    <tr>
+                        <th width="100">数据模型名称</th>
+                        <td><input type="text" ng-model="dataModelName"/></td>
+                    </tr>
+                    <tr>
+                        <th>数据模型描述</th>
+                        <td><textarea ng-model="dataModelMs"></textarea></td>
+                    </tr>
+                </table>
+        </div>
+        <div class="splitNr">
+             <h1 class="topTitle">维度表</h1>
+             <div>
+                 <div class="drag_left">从左侧拖拽添加维度表</div>
+                 <div class="drag_right">
+                     <table cellpadding="0" cellspacing="0" id="wdTable">
+                         <tr>
+                             <th>序号</th>
+                             <th>表名称</th>
+                             <th>字段名称</th>
+                             <th>操作</th>
+                         </tr>
+                         <!--<tr>
+                             <td rowspan="2">1</td>
+                             <td rowspan="2">DIM_ADMINISTRATION</td>
+                             <td>ADMIN_CODE(varchar(256))</td>
+                             <td><button>删除</button></td>
+                         </tr>
+                         <tr>
+                             <td>ADMIN_CODE(varchar(256))</td>
+                             <td><button>删除</button></td>
+                         </tr>
+                         <tr>
+                             <td rowspan="2">2</td>
+                             <td rowspan="2">DIM_ADMINISTRATION</td>
+                             <td>ADMIN_CODE(varchar(256))</td>
+                             <td><button>删除</button></td>
+                         </tr>
+                         <tr>
+                             <td>ADMIN_CODE(varchar(256))</td>
+                             <td><button>删除</button></td>
+                         </tr>-->
+                     </table>
+                 </div>
+             </div>
+            <div style="clear:both"></div>
+        </div>
+
+        <div class="splitNr">
+            <h1 class="topTitle">度量表</h1>
+            <div>
+                <div class="drag_left">从左侧拖拽添加度量表</div>
+                <div class="drag_right">
+                    <table cellpadding="0" cellspacing="0" id="dlTable">
+                        <tr>
+                            <th>序号</th>
+                            <th>表名称</th>
+                            <th>字段名称</th>
+                            <th>计算规则</th>
+                            <th>操作</th>
+                        </tr>
+                       <!-- <tr>
+                            <td>1</td>
+                            <td>DIM_ADMINISTRATION</td>
+                            <td>ADMIN_CODE(varchar(256))</td>
+                            <td>
+                                <span class="selectDiv">
+                                    <font>计算规则</font>
+                                    <div>
+                                        <p>SUM</p>
+                                        <p>MIN</p>
+                                        <p>MAX</p>
+                                        <p>COUNT</p>
+                                        <p>COUNT_DISTINCT</p>
+                                    </div>
+                                </span>
+                            </td>
+                            <td><button>删除</button></td>
+                        </tr>
+                        <tr>
+                            <td>1</td>
+                            <td>DIM_ADMINISTRATION</td>
+                            <td>ADMIN_CODE(varchar(256))</td>
+                            <td>
+                                <span class="selectDiv">
+                                    <font>计算规则</font>
+                                    <div>
+                                        <p>SUM</p>
+                                        <p>MIN</p>
+                                        <p>MAX</p>
+                                        <p>COUNT</p>
+                                        <p>COUNT_DISTINCT</p>
+                                    </div>
+                                </span>
+                            </td>
+                            <td><button>删除</button></td>
+                        </tr>-->
+                    </table>
+                </div>
+            </div>
+            <div style="clear:both;"></div>
+        </div>
+        <div class="splitNr">
+            <h1 class="topTitle">配置表关联关系</h1>
+            <h2 class="topTitle2">表关联关系</h2>
+            <div style="padding-left:30px;">
+                <table id="relationTable">
+                    <tr>
+                        <td><span class="selectDiv" name="leftTable">
+                            <font>主表名称</font>
+                            <div>
+                                <p ng-repeat="cube in zbList">{{cube}}</p>
+                            </div>
+                        </span></td>
+                        <td><span class="selectDiv">
+                            <font>连接类型</font>
+                            <div>
+                                <p ng-repeat="cube in lxList">{{cube}}</p>
+                            </div>
+                        </span></td>
+                        <td><span class="selectDiv" name="rightTable">
+                            <font>从表名称</font>
+                            <div>
+                                <p ng-repeat="cube in cbList">{{cube}}</p>
+                            </div>
+                        </span></td>
+                        <td><span class="selectDiv" >
+                            <font>字段名称</font>
+                            <div>
+                                <p ng-repeat="cube in zdList">{{cube.columnName}}</p>
+                            </div>
+                        </span></td>
+                        <td>= <span class="selectDiv" >
+                            <font>字段名称</font>
+                            <div>
+                               <p ng-repeat="cube in cdList">{{cube.columnName}}</p>
+                            </div>
+                        </span></td>
+                        <td><span class="addBtn" ng-click="addEvent()">+</span></td>
+                    </tr>
+                    <tr ng-repeat="cube in tableGlGxList">
+                        <td><span class="selectDiv" name="leftTable">
+                            <font>主表名称</font>
+                            <div>
+                                <p ng-repeat="x in zbList">{{x}}</p>
+                            </div>
+                        </span></td>
+                        <td><span class="selectDiv">
+                            <font>连接类型</font>
+                            <div>
+                                <p ng-repeat="cube in lxList">{{cube}}</p>
+                            </div>
+                        </span></td>
+                        <td><span class="selectDiv" name="rightTable">
+                            <font>从表名称</font>
+                            <div>
+                                <p ng-repeat="cube in cbList">{{cube}}</p>
+                            </div>
+                        </span></td>
+                        <td><span class="selectDiv" >
+                            <font>字段名称</font>
+                            <div>
+                                <p ng-repeat="cube in zdList">{{cube.columnName}}</p>
+                            </div>
+                        </span></td>
+                        <td>= <span class="selectDiv" >
+                            <font>字段名称</font>
+                            <div>
+                                  <p ng-repeat="cube in cdList">{{cube.columnName}}</p>
+                            </div>
+                        </span></td>
+                        <td><span class="deleteBtn" ng-click="deleteEvent($event)">-</span></td>
+                    </tr>
+
+                </table>
+            </div>
+            <h2 class="topTitle2">同步策略</h2>
+            <div style="padding-left:30px;">
+            <select ng-model="syncPolicy" class="selectDiv">
+				<option ng-repeat="x in syncPolicys" value="{{x.code}}">{{x.name}}</option>
+			</select>
+            </div>
+            <div style="clear:both;margin-bottom:80px;"></div>
+        </div>
+    </div>
+    <!--content end-->
+
+</div>
+<!--tab end-->
+

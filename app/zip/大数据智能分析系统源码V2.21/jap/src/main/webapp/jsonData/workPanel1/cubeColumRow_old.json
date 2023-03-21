@@ -1,0 +1,35 @@
+{
+  "success" : true,
+  "code" : 1000,
+  "msg" : "操作成功",
+  "title" : "成功",
+  "data" : {
+    "listDim" : [ {
+      "id" : "1",
+      "columnName" : "dim_column1",
+      "columnNameCn" : "维度列111111111111",
+      "tableName" : "dim_table1",
+      "dataName" : "orac"
+    }, {
+      "id" : "3",
+      "columnName" : "dim_column2",
+      "columnNameCn" : "维度列2222222222",
+      "tableName" : "dim_table2",
+      "dataName" : "orac"
+    } ],
+    "listFact" : [ {
+      "id" : "2",
+      "columnName" : "fact_column1",
+      "columnNameCn" : "度量列111111111111111",
+      "tableName" : "fact_table1",
+      "dataName" : "orac"
+    },
+      {
+        "id" : "4",
+        "columnName" : "fact_column2",
+        "columnNameCn" : "度量列22222222222",
+        "tableName" : "fact_table2",
+        "dataName" : "orac"
+      }]
+  }
+}

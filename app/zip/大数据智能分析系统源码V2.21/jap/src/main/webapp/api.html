@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html ng-app="zztzApp">
+<head>
+    <meta name="keywords" content="九次方,JAP,大数据,智能,分析"/>
+    <meta name="description" content="JAP大数据分析平台"/>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=Edge，chrome=1">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>九次方大数据智能分析平台</title>
+    <!--Font图形样式-->
+    <link href="scripts/font-awesome-4.5.0/css/font-awesome.min.css" type="text/css" rel="stylesheet"/>
+    <!--jQuery UI css-->
+    <link href="scripts/jquery-ui-1.10.4.custom/css/base/jquery-ui-1.10.4.custom.min.css" type="text/css" rel="stylesheet"/>
+
+	<!--ng dialog -->
+    <link rel="stylesheet" type="text/css" href="scripts/ng-dialog/css/ngDialog.css" />
+    <link rel="stylesheet" type="text/css"  href="scripts/ng-dialog/css/ngDialog-theme-default.css"/>
+    <!--自定义样式-->
+    <link href="css/zztzfx/common.css" type="text/css" rel="stylesheet"/>
+    <link href="css/zztzfx/header_zztzfx.css" type="text/css" rel="stylesheet"/>
+    <link href="css/zztzfx/main_zztzfx.css" type="text/css" rel="stylesheet"/>
+    <link href="css/zztzfx/mic_zztzfx.css" type="text/css" rel="stylesheet"/>
+    <!--jQuery-->
+    <script src="scripts/jquery-ui-1.10.4.custom/js/jquery-1.10.2.js"></script>
+    <!--jQuery UI js-->
+    <script src="scripts/jquery-ui-1.10.4.custom/js/jquery-ui-1.10.4.custom.min.js"></script>
+
+    <!--angularJs-->
+    <script src="scripts/angular-1.3.0.14/angular.min.js"></script>
+    <!--<script src="http://apps.bdimg.com/libs/angular.js/1.4.6/angular.min.js"></script>-->
+    <script src="scripts/angular-ui-router.js"></script>
+
+	<!--ng dialog -->
+    <script src="scripts/ng-dialog/js/ngDialog.js"></script>
+    
+    <!--echarts-->
+    <script src="scripts/echarts-3.1.10/dist/echarts.js"></script>
+    
+    <script type="text/javascript">
+    var zztzApp = angular.module('zztzApp', []);
+    </script>
+    <script src="js/zztzfx/AngularJS/headerDerective.js"></script>
+    <script src="js/zztzfx/common/common.js"></script>
+    <script src="js/zztzfx/AngularJS/Angular_workData.js"></script>
+    <script src="js/zztzfx/myDataSoruce.js"></script>
+
+	<!-- mypie start-->
+    <script src="js/zztzfx/myPie/render-pie.service.js"></script>
+    <!-- end-->
+    <!-- mystory start -->
+    <script src="js/zztzfx/myStory/story-draggable.directive.js"></script>
+    <!-- end -->
+    <script src="js/api.js"></script>
+    
+    <script src="js/theme/chalk.js"></script>
+	<script src="js/theme/dark.js"></script>
+	<script src="js/theme/essos.js"></script>
+	<script src="js/theme/infographic.js"></script>
+	<script src="js/theme/macarons.js"></script>
+	<script src="js/theme/purple-passion.js"></script>
+	<script src="js/theme/roma.js"></script>
+	<script src="js/theme/shine.js"></script>
+	<script src="js/theme/vintage.js"></script>
+	<script src="js/theme/walden.js"></script>
+	<script src="js/theme/westeros.js"></script>
+	<script src="js/theme/wonderland.js"></script>
+	<script src="js/theme/JAP.js"></script>
+	<script src="js/theme/JAP_blue.js"></script>
+
+</head>
+<body class="overflowH" style="background: #091737;overflow-y:auto;">
+	<div ng-controller="apiController">
+	
+	  	<div id="myPie_main" style="width: 100%;margin:0px;">
+		    <div  id="mp_storyDiv" ng-init="getStory()" style="background-color:#091737;overflow-y:auto;border:0px;width: 100%;" ng-style="{'background-color': selectedForeColor}">
+				
+			</div>
+		</div>
+	</div>
+</body>
+</html>
