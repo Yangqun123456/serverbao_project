@@ -1,13 +1,12 @@
 import json
 from django.http import JsonResponse
-from django.shortcuts import render, HttpResponse
+from django.shortcuts import render
 from app.models import *
 import bcrypt
-from sklearn.feature_extraction.text import TfidfVectorizer
-from sklearn.metrics.pairwise import cosine_similarity
-from app.lib.codeAnalyze import *
+from app.lib.codeAnalyze import zipDownLoad
 from app.lib.documentAnalyze import *
 from django.core import serializers
+from app.lib.codeCounterAnalyzeClass import CodeCounterAnalyze
 
 
 def index(request):
@@ -244,22 +243,7 @@ def codeAnalyze(request):
     if request.method == 'POST':
         zipfile = request.POST.get('zipfile')
         zipDownLoad(zipfile)  # 解压zip文件
-        codeList = read_files("./app/zip")  # 读取文件夹下所有的文件
-        codeResourceList = read_corpus(
-            './app/resource/codeResource.java')  # 读取指定的文件
-
-        allCode = []
-        allCode.extend([code.content for code in codeList])
-        allCode.extend([code.content for code in codeResourceList])
-        print(len(allCode))
-
-        # TF - IDF 算法
-        vectorizer = TfidfVectorizer()
-        # Generate matrix of word vectors
-        tfidf_matrix_codeStructList = vectorizer.fit_transform(allCode)
-
-        # compute and print the cosine similarity matrix
-        cosine_sim = cosine_similarity(
-            tfidf_matrix_codeStructList[:len(codeList)], tfidf_matrix_codeStructList[len(codeList):])
-        codeSimList = codeSimAnalyze(cosine_sim, codeList, codeResourceList)
+        codeCouter = CodeCounterAnalyze()
+        codeCouter.count('./app/zip')
+        codeSimList = codeCouter.codeSimLines('./app/resource/codeResource.java')
         return JsonResponse({'status': 0, 'message': '相似度分析成功', 'data': [code.__dict__ for code in codeSimList], 'length': len(codeSimList)}, json_dumps_params={'ensure_ascii': False})

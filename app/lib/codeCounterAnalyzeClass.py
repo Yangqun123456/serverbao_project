@@ -6,7 +6,7 @@ from sklearn.feature_extraction.text import TfidfVectorizer
 from sklearn.metrics.pairwise import cosine_similarity
 
 
-class CodeCounter:
+class CodeCounterAnalyze:
     def __init__(self):
         self.code_lines = 0     # 代码行数
         self.comment_lines = 0  # 注释行数
@@ -19,7 +19,7 @@ class CodeCounter:
         self.test_suffixes = {'Test.java',
                               'Tests.java', 'TestCase.java'}  # 测试文件后缀
 
-    def count(self, path):
+    def count(self, path='./app/zip'):
         if not os.path.exists(path):
             print('文件夹不存在！')
             return
