@@ -13,7 +13,9 @@ class CodeCounterAnalyze:
         self.blank_lines = 0    # 空行数
         self.file_count = 0     # 文件数量
         self.code_sim_lines = 0
+        self.original_code_lines = 0
         self.file_list = []
+        self.original_file_count = 0
         # 统计Java、JavaScript、HTML和CSS文件
         self.suffixes = {'.java', '.js', '.html', '.css'}
         self.test_suffixes = {'Test.java',
@@ -110,4 +112,12 @@ class CodeCounterAnalyze:
         codeSimList = codeSimAnalyze(cosine_sim, codeList, codeResourceList)
         for code in codeSimList:
             self.code_sim_lines += code.linecount
+        self.count_original_code_lines()
         return codeSimList
+
+    def count_original_code_lines(self):
+        self.original_code_lines = self.code_lines-self.code_sim_lines
+
+    def count_original_file(self, codeSimList):
+        self.original_file_count = self.file_count - \
+            len(set(obj.path for obj in codeSimList))

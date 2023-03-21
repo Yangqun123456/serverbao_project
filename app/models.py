@@ -39,3 +39,13 @@ class Subsystem(models.Model):
     developmentEffort_adjusted = models.FloatField(blank=True)
     operationsEffort_adjusted = models.FloatField(blank=True)
     project_id = models.CharField(max_length=10)
+
+
+class codeAnalyze(models.Model):
+    project_id = models.CharField(max_length=10)
+    name = models.CharField(max_length=20)
+    code_lines = models.IntegerField(blank=True)
+    original_code_lines = models.IntegerField(blank=True)
+    file_count = models.IntegerField(blank=True)
+    original_file_count = models.IntegerField(blank=True)
+    code_zip = models.BinaryField()

@@ -1,6 +1,6 @@
 import json
 from django.http import JsonResponse
-from django.shortcuts import render
+from django.shortcuts import get_object_or_404, render
 from app.models import *
 import bcrypt
 from app.lib.codeAnalyze import zipDownLoad
@@ -60,6 +60,13 @@ def login(request):
         else:
             return JsonResponse({'status': 1, 'message': '输入密码错误'}, json_dumps_params={'ensure_ascii': False})
 
+
+'''
+    ================================================================
+    PART 1
+    需求文档分析
+    ================================================================
+'''
 
 '''
     新增项目
@@ -238,12 +245,75 @@ def costAnalyze(request):
     ================================================================
 '''
 
+'''
+    新增项目代码
+    @param name String 子系统名
+    @param project_id String 隶属项目编号
+    @param code_zip Binary zip文件
+'''
 
-def codeAnalyze(request):
+
+def addCodeOrganization(request):
     if request.method == 'POST':
-        zipfile = request.POST.get('zipfile')
-        zipDownLoad(zipfile)  # 解压zip文件
-        codeCouter = CodeCounterAnalyze()
-        codeCouter.count('./app/zip')
-        codeSimList = codeCouter.codeSimLines('./app/resource/codeResource.java')
-        return JsonResponse({'status': 0, 'message': '相似度分析成功', 'data': [code.__dict__ for code in codeSimList], 'length': len(codeSimList)}, json_dumps_params={'ensure_ascii': False})
+        if Project.objects.filter(project_id=request.POST.get('project_id')).first() is None:
+            return JsonResponse({'status': 1, 'message': '项目编号不存在'}, json_dumps_params={'ensure_ascii': False})
+        elif codeAnalyze.objects.filter(project_id=request.POST.get('project_id')).first() is not None:
+            return JsonResponse({'status': 1, 'message': '项目源码已存在'}, json_dumps_params={'ensure_ascii': False})
+        else:
+            compressed_file = request.FILES.get('code_zip')
+            if compressed_file:
+                data = compressed_file.read()
+                compressed_file_obj = codeAnalyze(project_id=request.POST.get(
+                    'project_id'), name=request.POST.get('name'), code_zip=data)
+                compressed_file_obj.save()
+                return JsonResponse({'status': 0, 'message': '新建项目源码成功'}, json_dumps_params={'ensure_ascii': False})
+            else:
+                return JsonResponse({'status': 1, 'message': '项目源码为空'}, json_dumps_params={'ensure_ascii': False})
+
+
+'''
+    更新项目代码
+    @param project_id String 隶属项目编号
+    @param code_zip Binary zip文件
+'''
+
+
+def updateCodeOrganization(request):
+    if request.method == 'POST':
+        compressed_file_obj = get_object_or_404(
+            codeAnalyze, project_id=request.POST.get('project_id'))
+        if compressed_file_obj is None:
+            return JsonResponse({'status': 1, 'message': '项目不存在'}, json_dumps_params={'ensure_ascii': False})
+        else:
+            compressed_file = request.FILES.get('code_zip')
+            if compressed_file:
+                compressed_file_obj.code_zip = compressed_file.read()
+                compressed_file_obj.save()
+                return JsonResponse({'status': 0, 'message': '新建项目源码成功'}, json_dumps_params={'ensure_ascii': False})
+            else:
+                return JsonResponse({'status': 1, 'message': '项目源码为空'}, json_dumps_params={'ensure_ascii': False})
+
+
+'''
+    项目代码分析
+    @param project_id String 隶属项目编号
+'''
+
+
+def codeAnalyzer(request):
+    if request.method == 'POST':
+        compressed_file_obj = get_object_or_404(
+            codeAnalyze, project_id=request.POST.get('project_id'))
+        if compressed_file_obj is None:
+            return JsonResponse({'status': 1, 'message': '项目不存在'}, json_dumps_params={'ensure_ascii': False})
+        else:
+            zipDownLoad(compressed_file_obj.code_zip)  # 解压zip文件
+            codeCouter = CodeCounterAnalyze()
+            codeCouter.count('./app/zip')
+            codeSimList = codeCouter.codeSimLines(
+                './app/resource/codeResource.java')
+            compressed_file_obj.code_lines = codeCouter.code_lines
+            compressed_file_obj.original_code_lines = codeCouter.original_code_lines
+            compressed_file_obj.file_count = compressed_file_obj.file_count
+            compressed_file_obj.save()
+            return JsonResponse({'status': 0, 'message': '相似度分析成功', 'data': [code.__dict__ for code in codeSimList], 'length': len(codeSimList)}, json_dumps_params={'ensure_ascii': False})
