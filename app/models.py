@@ -48,4 +48,5 @@ class codeAnalyze(models.Model):
     original_code_lines = models.IntegerField(blank=True)
     file_count = models.IntegerField(blank=True)
     original_file_count = models.IntegerField(blank=True)
+    filename_list = models.TextField(blank=True)
     code_zip = models.BinaryField()

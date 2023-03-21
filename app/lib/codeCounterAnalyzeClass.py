@@ -113,6 +113,7 @@ class CodeCounterAnalyze:
         for code in codeSimList:
             self.code_sim_lines += code.linecount
         self.count_original_code_lines()
+        self.count_original_file(codeSimList)
         return codeSimList
 
     def count_original_code_lines(self):

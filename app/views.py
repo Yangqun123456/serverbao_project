@@ -312,8 +312,11 @@ def codeAnalyzer(request):
             codeCouter.count('./app/zip')
             codeSimList = codeCouter.codeSimLines(
                 './app/resource/codeResource.java')
+            # 保存分析结果至数据库
             compressed_file_obj.code_lines = codeCouter.code_lines
             compressed_file_obj.original_code_lines = codeCouter.original_code_lines
-            compressed_file_obj.file_count = compressed_file_obj.file_count
+            compressed_file_obj.file_count = codeCouter.file_count
+            compressed_file_obj.original_file_count = codeCouter.original_file_count
+            compressed_file_obj.filename_list = str(codeCouter.file_list)
             compressed_file_obj.save()
             return JsonResponse({'status': 0, 'message': '相似度分析成功', 'data': [code.__dict__ for code in codeSimList], 'length': len(codeSimList)}, json_dumps_params={'ensure_ascii': False})
