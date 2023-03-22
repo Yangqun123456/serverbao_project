@@ -33,5 +33,7 @@ urlpatterns = [
     path('api/selectEffort_noadjusted/', views.selectEffort_noadjusted),
     path('api/adjustEffort/', views.adjustEffort),
     path('api/addCodeOrganization/', views.addCodeOrganization),
+    path('api/updateCodeOrganization/', views.updateCodeOrganization),
     path('api/costAnalyzer/', views.codeAnalyzer),
+    path('api/selectCodeOrganization/', views.selectCodeOrganization)
 ]
