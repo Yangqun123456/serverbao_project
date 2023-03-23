@@ -292,7 +292,7 @@ def updateCodeOrganization(request):
             if compressed_file:
                 compressed_file_obj.code_zip = compressed_file.read()
                 compressed_file_obj.save()
-                return JsonResponse({'status': 0, 'message': '新建项目源码成功'}, json_dumps_params={'ensure_ascii': False})
+                return JsonResponse({'status': 0, 'message': '更新项目源码成功'}, json_dumps_params={'ensure_ascii': False})
             else:
                 return JsonResponse({'status': 1, 'message': '项目源码为空'}, json_dumps_params={'ensure_ascii': False})
 
