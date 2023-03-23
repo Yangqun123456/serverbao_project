@@ -307,7 +307,7 @@ def codeAnalyzer(request):
         if compressed_file_obj is None:
             return JsonResponse({'status': 1, 'message': '项目不存在'}, json_dumps_params={'ensure_ascii': False})
         else:
-            zipDownLoad(compressed_file_obj.code_zip)  # 解压zip文件
+            zipDownLoad(compressed_file_obj,'./app/zip')  # 解压zip文件
             codeCounter = CodeCounterAnalyze()
             codeCounter.count('./app/zip')
             codeSimList = codeCounter.codeSimLines(
@@ -334,4 +334,4 @@ def selectCodeOrganization(request):
     if request.method == 'GET':
         code = codeAnalyze.objects.filter(
             project_id=request.GET.get('project_id')).values('project_id', 'name', 'code_lines', 'original_code_lines', 'file_count', 'original_file_count', 'filename_list').first()
-        return JsonResponse({'status': 0, 'message': '查询项目成功', 'data': json.loads(serializers.serialize('json', code))}, json_dumps_params={'ensure_ascii': False})
+        return JsonResponse({'status': 0, 'message': '查询项目成功', 'data': code}, json_dumps_params={'ensure_ascii': False})

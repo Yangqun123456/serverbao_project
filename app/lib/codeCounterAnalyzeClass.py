@@ -26,11 +26,13 @@ class CodeCounterAnalyze:
             print('文件夹不存在！')
             return
         for dirpath, dirnames, filenames in os.walk(path):
+            if 'scripts' in dirpath.split(os.path.sep):
+                continue  # 如果是 scripts 文件夹，则跳过
             for filename in filenames:
                 if filename.endswith(tuple(self.suffixes)) and not filename.endswith(tuple(self.test_suffixes)):
                     codeCount = self.count_file(
                         os.path.join(dirpath, filename), filename)
-                    self.file_list.append(codeCount)
+                    self.file_list.append(filename)
                     self.code_lines += codeCount.code_lines
                     self.comment_lines += codeCount.comment_lines
                     self.blank_lines += codeCount.blank_lines
