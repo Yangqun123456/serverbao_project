@@ -1,7 +1,7 @@
 import os
 import re
 from app.lib.codeAnalyze import codeSimAnalyze, read_corpus, read_files
-from app.lib.dataStructure import codeCountElement
+from app.lib.dataStructure import codeCountElement, fileElement
 from sklearn.feature_extraction.text import TfidfVectorizer
 from sklearn.metrics.pairwise import cosine_similarity
 
@@ -32,15 +32,12 @@ class CodeCounterAnalyze:
                 if filename.endswith(tuple(self.suffixes)) and not filename.endswith(tuple(self.test_suffixes)):
                     codeCount = self.count_file(
                         os.path.join(dirpath, filename), filename)
-                    self.file_list.append(filename)
+                    self.file_list.append(fileElement(filename, os.path.join(
+                        dirpath, filename).replace("./app/zip\\", ""), codeCount.code_lines))
                     self.code_lines += codeCount.code_lines
                     self.comment_lines += codeCount.comment_lines
                     self.blank_lines += codeCount.blank_lines
                     self.file_count += 1  # 统计文件数量
-        print('文件数量：', self.file_count)
-        print('代码行数：', self.code_lines)
-        print('注释行数：', self.comment_lines)
-        print('空行数：', self.blank_lines)
 
     def count_file(self, filepath, filename):
         code_lines = 0     # 代码行数

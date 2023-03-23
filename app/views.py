@@ -310,7 +310,7 @@ def codeAnalyzer(request):
         if compressed_file_obj is None:
             return JsonResponse({'status': 1, 'message': '项目不存在'}, json_dumps_params={'ensure_ascii': False})
         else:
-            zipDownLoad(compressed_file_obj,'./app/zip')  # 解压zip文件
+            zipDownLoad(compressed_file_obj, './app/zip')  # 解压zip文件
             codeCounter = CodeCounterAnalyze()
             codeCounter.count('./app/zip')
             codeSimList = codeCounter.codeSimLines(
@@ -320,10 +320,15 @@ def codeAnalyzer(request):
             compressed_file_obj.original_code_lines = codeCounter.original_code_lines
             compressed_file_obj.file_count = codeCounter.file_count
             compressed_file_obj.original_file_count = codeCounter.original_file_count
-            compressed_file_obj.filename_list = ','.join(codeCounter.file_list)
+            compressed_file_obj.blank_lines = codeCounter.blank_lines
+            compressed_file_obj.comment_lines = codeCounter.comment_lines
+            compressed_file_obj.filename_list = [
+                code.__dict__ for code in codeCounter.file_list]
+            compressed_file_obj.codeSimList = [
+                code.__dict__ for code in codeSimList]
             compressed_file_obj.save()
             return JsonResponse({'status': 0, 'message': '相似度分析成功', 'codeCount': {
-                'code_lines': codeCounter.code_lines, 'original_code_lines': codeCounter.original_code_lines, 'file_count': codeCounter.file_count, 'original_file_count': codeCounter.original_file_count, 'filename_list': codeCounter.file_list},
+                'code_lines': codeCounter.code_lines, 'comment_lines': codeCounter.comment_lines, 'blank_lines': codeCounter.blank_lines, 'original_code_lines': codeCounter.original_code_lines, 'file_count': codeCounter.file_count, 'original_file_count': codeCounter.original_file_count, 'filename_list': [code.__dict__ for code in codeCounter.file_list]},
                 'length': len(codeSimList), 'data': [code.__dict__ for code in codeSimList]}, json_dumps_params={'ensure_ascii': False})
 
 
@@ -336,5 +341,20 @@ def codeAnalyzer(request):
 def selectCodeOrganization(request):
     if request.method == 'GET':
         code = codeAnalyze.objects.filter(
-            project_id=request.GET.get('project_id')).values('project_id', 'name', 'code_lines', 'original_code_lines', 'file_count', 'original_file_count', 'filename_list').first()
-        return JsonResponse({'status': 0, 'message': '查询项目成功', 'data': code}, json_dumps_params={'ensure_ascii': False})
+            project_id=request.GET.get('project_id')).values('project_id', 'name', 'code_lines', 'original_code_lines', 'file_count', 'original_file_count', 'filename_list', 'codeSimList').first()
+        if code is None:
+            return JsonResponse({'status': 1, 'message': '不存在该项目'}, json_dumps_params={'ensure_ascii': False})
+        else:
+            return JsonResponse({'status': 0, 'message': '查询项目成功', 'data': code}, json_dumps_params={'ensure_ascii': False})
+
+
+'''
+    查询所有代码分析结果
+'''
+
+
+def selectALLCodeOrganization(request):
+    if request.method == 'GET':
+        allCode = list(codeAnalyze.objects.values('project_id', 'name', 'code_lines', 'original_code_lines',
+                                                  'file_count', 'original_file_count', 'filename_list', 'codeSimList').all())
+        return JsonResponse({'status': 0, 'message': '查询项目成功', 'data': allCode}, json_dumps_params={'ensure_ascii': False})

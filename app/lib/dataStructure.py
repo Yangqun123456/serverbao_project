@@ -8,11 +8,17 @@ class codeElement:
 class codeSimElement:
     def __init__(self, content, path, linecount, sim_content, sim_path, sim_value):
         self.content = content
-        self.path = path
+        self.path = path.replace("./app/zip\\", "")
         self.linecount = linecount
         self.sim_content = sim_content
-        self.sim_path = sim_path
+        self.sim_path = sim_path.replace("./app/resource/", "")
         self.sim_value = sim_value
+
+class fileElement:
+    def __init__(self, filename, path, linecount):
+        self.filename = filename
+        self.path = path
+        self.linecount = linecount
 
 
 class sentenceElement:
