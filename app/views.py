@@ -241,7 +241,6 @@ def costAnalyze(request):
     ================================================================
     PART 2
     代码分析
-    ！！！未完成
     ================================================================
 '''
 
@@ -250,6 +249,8 @@ def costAnalyze(request):
     @param name String 子系统名
     @param project_id String 隶属项目编号
     @param code_zip Binary zip文件
+
+    !未测试
 '''
 
 
@@ -275,6 +276,8 @@ def addCodeOrganization(request):
     更新项目代码
     @param project_id String 隶属项目编号
     @param code_zip Binary zip文件
+
+    !未测试
 '''
 
 
