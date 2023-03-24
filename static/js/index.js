@@ -26,7 +26,7 @@ signIn.onclick = () => {
     }, async function (data) {
         if (data.status == 0) {
             await alertmess('登陆成功')
-            location.href = 'http://127.0.0.1:4002/mainpage/?username=' + username
+            location.href = 'http://baidu.com'
         } else alert(data.message)
     })
     return false;
