@@ -28,7 +28,7 @@ urlpatterns = [
     path('api/selectProject/', views.selectProject),
     path('api/addSubsystem/', views.addSubsystem),
     path('api/selectALLSubsystems/', views.selectALLSubsystems),
-    path('api/codeAnalyze/', views.codeAnalyze),
+    path('api/costAnalyzer/', views.costAnalyzer),
     path('api/documentAnalyze/', views.documentAnalyze),
     path('api/selectEffort_noadjusted/', views.selectEffort_noadjusted),
     path('api/adjustEffort/', views.adjustEffort),

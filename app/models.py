@@ -28,6 +28,7 @@ class Project(models.Model):
     remark = models.TextField(blank=True)
     state = models.CharField(max_length=20, blank=True)
     finalCost = models.FloatField(blank=True)
+    email = models.CharField(max_length=45)
 
 
 class Subsystem(models.Model):
@@ -39,6 +40,7 @@ class Subsystem(models.Model):
     developmentEffort_adjusted = models.FloatField(blank=True)
     operationsEffort_adjusted = models.FloatField(blank=True)
     project_id = models.CharField(max_length=10)
+    email = models.CharField(max_length=45)
 
 
 class codeAnalyze(models.Model):
@@ -53,3 +55,4 @@ class codeAnalyze(models.Model):
     filename_list = models.JSONField(blank=True)
     codeSimList = models.JSONField(blank=True)
     code_zip = models.BinaryField(blank=True)
+    email = models.CharField(max_length=45)
