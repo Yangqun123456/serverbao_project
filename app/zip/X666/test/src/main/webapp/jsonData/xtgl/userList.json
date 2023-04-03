@@ -1,0 +1,23 @@
+{
+  "success" : true,
+  "pageNum" : 1,
+  "pageSize" : 6,
+  "size" : 6,
+  "startRow" : 1,
+  "endRow" : 6,
+  "total" : 8,
+  "pages" : 2,
+  "list":[ {
+    "id" : 106,
+    "username" : "wcqwcqwcqwcqwcqwcqwcqwcqwcqwcqwcqwcqwcqwcqwcqwcq",
+    "salt" : "ac5305bf49968bae",
+    "roleIds" : [ 121 ],
+    "name" : "wcqwcqwcqwcqwcqwcqwcqwcqwcqwcqwcqwcqwcqwcqwcqwcqwcqwcq",
+    "telphone" : "111111",
+    "mobile" : "111111",
+    "roleType" : 0,
+    "status" : 0,
+    "email":"a@qq.com"
+  } ]
+
+}

@@ -1,0 +1,163 @@
+
+<style>
+ #topMenu_zztz{
+    position:static;
+ }
+  .leftDataDiv {
+     float:left;
+     position:static;
+     width:16%;
+  }
+  .tabPanel{
+    position:static;
+    float:left;
+    height:auto;
+    margin:0;
+    width:98%;
+    margin:0 1%;
+    padding-top:0.5%;
+    box-sizing:border-box;
+
+
+  }
+  #main_zztz{
+     position:static;
+  }
+  .workPanel{
+     height:auto;
+     position:static;
+  }
+  #tabDIV{
+     border-bottom:none;
+  }
+  .left_model > .left_panel{
+     box-sizing:border-box;
+     padding-left:5px;
+  }
+  .sryTable td{
+     font-size:12px;
+     color:#666;
+  }
+  .drag_right{
+     margin-left:0;
+  }
+</style>
+
+
+<!--tab start-->
+<div id="tab" class="tabPanel" ng-controller="myDataModelDetailController">
+
+    <!--tab_DIV start-->
+    <div id="tabDIV">
+        <ul>
+            <li class="first">
+                <span class="font_colorB ATab" id="workTableNameInput"  name="">数据模型详细</span>
+            </li>
+        </ul>
+        <button class="gray" ng-click="goPage()">返回</button>
+    </div>
+    <!--tab_DIV end-->
+
+    <!--content start-->
+    <div class="workPanel">
+        <div class="splitNr">
+             <table class="sryTable">
+                    <tr>
+                        <th width="100">数据模型名称</th>
+                        <td>{{modelName}}</td>
+                    </tr>
+                    <tr>
+                        <th>数据模型描述</th>
+                        <td>{{modelDesc}}</td>
+                    </tr>
+                </table>
+        </div>
+        <div class="splitNr">
+             <h1 class="topTitle">维度表</h1>
+             <div>
+                 <div class="drag_right">
+                     <table cellpadding="0" cellspacing="0" id="wdTable">
+                         <tr>
+                             <th>序号</th>
+                             <th>表名称</th>
+                             <th>字段名称</th>
+                         </tr>
+                     </table>
+                 </div>
+             </div>
+            <div style="clear:both"></div>
+        </div>
+
+        <div class="splitNr">
+            <h1 class="topTitle">度量表</h1>
+            <div>
+                <div class="drag_right">
+                    <table cellpadding="0" cellspacing="0" id="dlTable">
+                        <tr>
+                            <th>序号</th>
+                            <th>表名称</th>
+                            <th>字段名称</th>
+                            <th>计算规则</th>
+                        </tr>
+                    </table>
+                </div>
+            </div>
+            <div style="clear:both;"></div>
+        </div>
+        <div class="splitNr">
+            <h1 class="topTitle">配置表关联关系</h1>
+            <h2 class="topTitle2">表关联关系</h2>
+            <div style="padding-left:30px;">
+                <table>
+                <tr ">
+                        <td><span class="selectDiv">
+                            <font>主表名称</font>
+                        </span></td>
+                        <td><span class="selectDiv">
+                            <font>连接类型</font>
+                        </span></td>
+                        <td><span class="selectDiv">
+                            <font>从表名称</font>
+                        </span></td>
+                        <td><span class="selectDiv">
+                            <font>字段名称</font>
+                        </span></td>
+                        <td>= <span class="selectDiv">
+                            <font>字段名称</font>
+                        </span></td>
+                        
+                    </tr>
+                    <tr ng-repeat="relation in relations">
+                        <td><span >
+                            <font>{{relation.leftTableId}}</font>
+                        </span></td>
+                        <td><span >
+                            <font>{{relation.relationType}}</font>
+                        </span></td>
+                        <td><span >
+                            <font>{{relation.rigthTableId}}</font>
+                        </span></td>
+                        <td><span >
+                            <font>{{relation.leftColumn}}</font>
+                        </span></td>
+                        <td>= <span >
+                            <font>{{relation.rightColumn}}</font>
+                        </span></td>
+                        
+                    </tr>
+                </table>
+            </div>
+            <h2 class="topTitle2">同步策略</h2>
+           <div style="padding-left:30px;">
+                <span class="selectDiv">
+                        <font id="syncPolicy"></font>
+                    </span>
+            </div>
+            <div style="clear:both;margin-bottom:80px;"></div>
+        </div>
+    </div>
+    <!--content end-->
+
+</div>
+<!--tab end-->
+

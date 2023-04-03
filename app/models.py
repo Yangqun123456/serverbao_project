@@ -54,5 +54,5 @@ class codeAnalyze(models.Model):
     original_file_count = models.IntegerField(blank=True)
     filename_list = models.JSONField(blank=True)
     codeSimList = models.JSONField(blank=True)
-    code_zip = models.BinaryField(blank=True)
+    code_zip = models.CharField(max_length=45)
     email = models.CharField(max_length=45)

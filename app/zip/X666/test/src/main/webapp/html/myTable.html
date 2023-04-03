@@ -1,0 +1,81 @@
+<div  ng-controller="myTableController">
+	<div id="myTable_searchBar" ng-init="searchClick()">
+	    <div id="mt_searchDiv">
+	        <a ng-click="searchClick()" class="fa fa-search font_colorB" title="查询"></a>
+	        <input ng-keyup="myKeyup($event)"  type="text" ng-model="workName" value=""/>
+	    </div>
+	    <button ng-click="newStory()">新建专题</button>
+	    <button ng-click="newPie()">新建仪表盘</button>
+	    <button ng-click="showTable()">新建数据分析</button>
+	</div>
+	<div class="myTable_model" style="margin-top: 20px">
+	    <div class="mt_modelTitle"><span>我的数据分析</span></div>
+	    
+	    <div class="mt_modelShow">
+	        <div class="mt_modelDiv"  ng-repeat="table in tableList" >
+	           <img ng-click="showTable(table)" src="img/worktable.png" height="200" width="200"/>
+	           <div class="sjcgzs_text tab_under_90"  ng-init = "showCss()" style="height: 50px;">
+	           		<p data-toggle="tooltip" title="{{table.workTableName}}" style="color:#FFFFFF">{{table.workTableName|cut:false:15:'...'}}</p>
+	           		<p  style="color:#FFFFFF">{{table.workTableCode}}</p>
+	           		<img data-toggle="tooltip" title="删除工作表" style="margin:0 10px;" align="right"  ng-click = "delTable(table)" class="imgDel" src="img/del_u200.png"/>
+	           		<img data-toggle="tooltip" title="复制工作表" style="margin:0 10px;" align="right"  ng-click = "copyTable(table)" class="imgCopy" src="img/copy_u198.png"/>
+                </div>
+	        </div>
+	        <div ng-click="showTable(table)"  class="mt_modelDivAdd" style="line-height:200px"><a class="fa fa-plus" title="新建"></a></div>
+	    </div>
+	    
+	    
+	    
+	    <div ng-class="{true:'mt_modelTip',false:'mt_modelTip displayN'}[tableList.length==0]">
+	        <p>还没有我的作品，点击<span>"新建数据分析"</span>开始创建吧！</p>
+	    </div>
+	</div>
+	
+	<div class="myTable_model">
+	    <div class="mt_modelTitle"><span>我的仪表盘</span></div>
+	    <div class="mt_modelShow">
+	    
+	    <div class="mt_modelDiv"  ng-repeat="pie in pieList" >
+	          <img ng-click="showPie(pie)" src="img/pie.png" height="200" width="200"/>
+	           <div class="sjcgzs_text tab_under_90"  ng-init = "showCss()" style="height: 50px;">
+	           		<p data-toggle="tooltip" title="{{pie.name}}" style="color:#FFFFFF">{{pie.name|cut:false:15:'...'}}</p>
+	           		<p  style="color:#FFFFFF">更新时间：{{pie.updateTime|date:'yyyy-MM-dd'}}</p>
+	           		<img data-toggle="tooltip" title="删除仪表盘" style="margin:0 10px;" align="right"  ng-click = "delPie(pie)" class="imgDel" src="img/del_u200.png"/>
+	           		<img data-toggle="tooltip" title="复制仪表盘" style="margin:0 10px;" align="right"  ng-click = "copyPie(pie)" class="imgCopy" src="img/copy_u198.png"/>
+                </div>
+	    </div>
+	    
+	    <div ng-click="showPie(pie)" class="mt_modelDivAdd" style="line-height:200px"><a class="fa fa-plus" title="新建"></a>
+	    </div>
+	    </div>
+	    <div ng-class="{true:'mt_modelTip',false:'mt_modelTip displayN'}[pieList.length==0]">
+	        <p>还没有我的作品，点击<span>"新建仪表盘"</span>开始创建吧！</p>
+	    </div>
+	</div>
+	
+	<div class="myTable_model">
+	    <div class="mt_modelTitle"><span>我的专题</span></div>
+	    <div class="mt_modelShow">
+	    
+	    <div class="mt_modelDiv"  ng-repeat="story in storyList" >
+	          <img ng-click="showStory(story)" src="img/story.png" height="200" width="200"/>
+	           <div class="sjcgzs_text tab_under_90"  ng-init = "showCss()" style="height: 50px;">
+	           		<p data-toggle="tooltip" title="{{story.name}}" style="color:#FFFFFF">{{story.name|cut:false:15:'...'}}</p>
+	           		<p  style="color:#FFFFFF">更新时间：{{story.updateTime|date:'yyyy-MM-dd'}}</p>
+	           		<img data-toggle="tooltip" title="删除专题" style="margin:0 10px;" align="right"  ng-click = "delStory(story)" class="imgDel" src="img/del_u200.png"/>
+	           		<img data-toggle="tooltip" title="复制专题" style="margin:0 10px;" align="right"  ng-click = "copyStory(story)" class="imgCopy" src="img/copy_u198.png"/>
+                </div>
+	    </div>
+	    
+	    <div ng-click="showStory(story)" class="mt_modelDivAdd" style="line-height:200px"><a class="fa fa-plus" title="新建"></a>
+	    </div>
+	    </div>
+	    <div ng-class="{true:'mt_modelTip',false:'mt_modelTip displayN'}[storyList.length==0]">
+	        <p>还没有我的作品，点击<span>"新建专题"</span>开始创建吧！</p>
+	    </div>
+	</div>
+	
+	<div class="LeadPageTip">
+	    <i class="fa fa-info-circle font_colorB"></i>&nbsp;<a class="font_colorB" ui-sref="zztzfx.LeadPage">使用说明</a>
+	</div>
+</div>

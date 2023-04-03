@@ -3,6 +3,7 @@ import numpy as np
 import shutil
 import zipfile
 import os
+import io
 from app.lib.dataStructure import codeElement, codeSimElement
 # 读取文件
 
@@ -42,20 +43,21 @@ def codeSimAnalyze(cosine_sim, codeList, codeResourceList):
 # 解压zip文件
 
 
-def zipDownLoad(code_analyze_obj, zip_path='./app/zip'):
-    # 读取二进制数据
-    compressed_data = code_analyze_obj.code_zip
+def zipDownLoad(compressed_data, zip_path='./app/zip'):
     # 清空目标文件夹
     shutil.rmtree(zip_path, ignore_errors=True)
     os.mkdir(zip_path)
-    temp_file_path = os.path.join(zip_path, 'temp.zip')
-    with open(temp_file_path, 'wb') as temp_file:
-        temp_file.write(compressed_data)
-    # 解压缩文件
-    with zipfile.ZipFile(temp_file_path, 'r') as zip_ref:
-        zip_ref.extractall(zip_path)
-    # 删除临时文件
-    os.remove(temp_file_path)
+    file_like_object = io.BytesIO(compressed_data)
+    with zipfile.ZipFile(file_like_object, 'r') as zip:
+        zip.extractall(zip_path)
+    # temp_file_path = os.path.join(zip_path, 'temp.zip')
+    # with open(temp_file_path, 'wb') as temp_file:
+    #     temp_file.write(compressed_data)
+    # # 解压缩文件
+    # with zipfile.ZipFile(temp_file_path, 'r') as zip_ref:
+    #     zip_ref.extractall(zip_path)
+    # # 删除临时文件
+    # os.remove(temp_file_path)
 
 
 # 遍历文件夹

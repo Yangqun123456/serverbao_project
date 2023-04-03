@@ -1,0 +1,42 @@
+{
+  "success" : true,
+  "pageNum" : 1,
+  "pageSize" : 6,
+  "size" : 6,
+  "startRow" : 1,
+  "endRow" : 6,
+  "total" : 8,
+  "pages" : 4,
+  "list":[
+    {
+      "id": 1,
+      "name": "超级管理员",
+      "enname": "SU",
+      "roleType": 1
+    },
+    {
+      "id": 2,
+      "name": "管理员111111111111111",
+      "enname": "U",
+      "roleType": 2
+    },
+    {
+      "id": 2,
+      "name": "管理员",
+      "enname": "U",
+      "roleType": 2
+    },
+    {
+      "id": 2,
+      "name": "管理员",
+      "enname": "U",
+      "roleType": 2
+    },
+    {
+      "id": 2,
+      "name": "管理员",
+      "enname": "U",
+      "roleType": 2
+    }
+  ]
+}

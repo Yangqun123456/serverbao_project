@@ -1,0 +1,120 @@
+[{
+		"nameWeidu": "经济类型",
+		"valueName": "中外合作",
+		"data": [{
+			"nameWeidu": "法人状态类型",
+			"valueName": "吊销",
+			"data": [{
+				"nameWeidu": "地区名称",
+				"dataX": ["东吴村委会"],
+				"dataY": [{
+					"nameDuliang": "注册资金",
+					"unitDuliang": "万元",
+					"dataType": "line",
+					"data_y": [0.0]
+				}]
+			}]
+		},
+		{
+			"nameWeidu": "法人状态类型",
+			"valueName": "在业",
+			"data": [{
+				"nameWeidu": "地区名称",
+				"dataX": ["淞港村委会",
+				"澄墩村委会"],
+				"dataY": [{
+					"nameDuliang": "注册资金",
+					"unitDuliang": "万元",
+					"dataType": "line",
+					"data_y": [10.0,
+					0.0]
+				}]
+			}]
+		},
+		{
+			"nameWeidu": "法人状态类型",
+			"valueName": "存续",
+			"data": [{
+				"nameWeidu": "地区名称",
+				"dataX": ["吴巷村委会"],
+				"dataY": [{
+					"nameDuliang": "注册资金",
+					"unitDuliang": "万元",
+					"dataType": "line",
+					"data_y": [0.0]
+				}]
+			}]
+		},
+		{
+			"nameWeidu": "法人状态类型",
+			"valueName": "开业",
+			"data": [{
+				"nameWeidu": "地区名称",
+				"dataX": ["淞南村委会"],
+				"dataY": [{
+					"nameDuliang": "注册资金",
+					"unitDuliang": "万元",
+					"dataType": "line",
+					"data_y": [0.0]
+				}]
+			}]
+		}]
+	},
+	{
+		"nameWeidu": "经济类型",
+		"valueName": "中外合资",
+		"data": [{
+			"nameWeidu": "法人状态类型",
+			"valueName": "吊销",
+			"data": [{
+				"nameWeidu": "地区名称",
+				"dataX": ["木林社区居委会",
+				"淞浦村委会",
+				"灵湖村委会"],
+				"dataY": [{
+					"nameDuliang": "注册资金",
+					"unitDuliang": "万元",
+					"dataType": "line",
+					"data_y": [10.0,
+					50.0,
+					10.0]
+				}]
+			}]
+		},
+		{
+			"nameWeidu": "法人状态类型",
+			"valueName": "在业",
+			"data": [{
+				"nameWeidu": "地区名称",
+				"dataX": ["城西苑社区居委会",
+				"淞港村委会",
+				"澄墩村委会",
+				"玫瑰苑社区居委会",
+				"竹园社区居委会"],
+				"dataY": [{
+					"nameDuliang": "注册资金",
+					"unitDuliang": "万元",
+					"dataType": "line",
+					"data_y": [1717039.33,
+					94504.0,
+					2175129.75,
+					588681.78,
+					25000.0]
+				}]
+			}]
+		},
+		{
+			"nameWeidu": "法人状态类型",
+			"valueName": "在营",
+			"data": [{
+				"nameWeidu": "地区名称",
+				"dataX": ["石舍村委会"],
+				"dataY": [{
+					"nameDuliang": "注册资金",
+					"unitDuliang": "万元",
+					"dataType": "line",
+					"data_y": [0.0]
+				}]
+			}]
+		}]
+	}]

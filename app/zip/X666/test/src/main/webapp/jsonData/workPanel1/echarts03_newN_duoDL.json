@@ -1,0 +1,670 @@
+{
+  "success": true,
+  "code": 1000,
+  "msg": "操作成功",
+  "title": "成功",
+  "data": [
+    [
+      {
+        "nameWeidu": "销售员姓名",
+        "colspan": 6,
+        "valueName": "杰克"
+      },
+      {
+        "nameWeidu": "销售员姓名",
+        "colspan": 6,
+        "valueName": "汤姆"
+      },
+      {
+        "nameWeidu": "销售员姓名",
+        "colspan": 6,
+        "valueName": "约翰"
+      }
+    ],
+    [
+      {
+        "nameWeidu": "商品名称",
+        "colspan": 2,
+        "valueName": "产品1"
+      },
+      {
+        "nameWeidu": "商品名称",
+        "colspan": 2,
+        "valueName": "产品2"
+      },
+      {
+        "nameWeidu": "商品名称",
+        "colspan": 2,
+        "valueName": "产品3"
+      },
+      {
+        "nameWeidu": "商品名称",
+        "colspan": 2,
+        "valueName": "产品1"
+      },
+      {
+        "nameWeidu": "商品名称",
+        "colspan": 2,
+        "valueName": "产品2"
+      },
+      {
+        "nameWeidu": "商品名称",
+        "colspan": 2,
+        "valueName": "产品3"
+      },
+      {
+        "nameWeidu": "商品名称",
+        "colspan": 2,
+        "valueName": "产品1"
+      },
+      {
+        "nameWeidu": "商品名称",
+        "colspan": 2,
+        "valueName": "产品2"
+      },
+      {
+        "nameWeidu": "商品名称",
+        "colspan": 2,
+        "valueName": "产品3"
+      }
+    ],
+    [
+      {
+        "nameWeidu": "客户地址",
+        "colspan": 1,
+        "valueName": "北京"
+      },
+      {
+        "nameWeidu": "客户地址",
+        "colspan": 1,
+        "valueName": "河南"
+      },
+      {
+        "nameWeidu": "客户地址",
+        "colspan": 1,
+        "valueName": "北京"
+      },
+      {
+        "nameWeidu": "客户地址",
+        "colspan": 1,
+        "valueName": "河南"
+      },
+      {
+        "nameWeidu": "客户地址",
+        "colspan": 1,
+        "valueName": "北京"
+      },
+      {
+        "nameWeidu": "客户地址",
+        "colspan": 1,
+        "valueName": "河南"
+      },
+      {
+        "nameWeidu": "客户地址",
+        "colspan": 1,
+        "valueName": "北京"
+      },
+      {
+        "nameWeidu": "客户地址",
+        "colspan": 1,
+        "valueName": "河南"
+      },
+      {
+        "nameWeidu": "客户地址",
+        "colspan": 1,
+        "valueName": "北京"
+      },
+      {
+        "nameWeidu": "客户地址",
+        "colspan": 1,
+        "valueName": "河南"
+      },
+      {
+        "nameWeidu": "客户地址",
+        "colspan": 1,
+        "valueName": "北京"
+      },
+      {
+        "nameWeidu": "客户地址",
+        "colspan": 1,
+        "valueName": "河南"
+      },
+      {
+        "nameWeidu": "客户地址",
+        "colspan": 1,
+        "valueName": "北京"
+      },
+      {
+        "nameWeidu": "客户地址",
+        "colspan": 1,
+        "valueName": "河南"
+      },
+      {
+        "nameWeidu": "客户地址",
+        "colspan": 1,
+        "valueName": "北京"
+      },
+      {
+        "nameWeidu": "客户地址",
+        "colspan": 1,
+        "valueName": "河南"
+      },
+      {
+        "nameWeidu": "客户地址",
+        "colspan": 1,
+        "valueName": "北京"
+      },
+      {
+        "nameWeidu": "客户地址",
+        "colspan": 1,
+        "valueName": "河南"
+      }
+    ],
+    [
+      {
+        "nameWeidu": "客户姓名",
+        "colspan": 1,
+        "dataX": [
+          "客户1",
+          "客户3"
+        ],
+        "dataY": [
+          {
+            "nameDuliang": "订单数量",
+            "unitDuliang": "个",
+            "dataType": "line",
+            "data_y": [
+              "90",
+              "110"
+            ]
+          },
+          {
+            "nameDuliang": "订单总额",
+            "unitDuliang": "万元",
+            "dataType": "line",
+            "data_y": [
+              "5",
+              "7"
+            ]
+          }
+        ]
+      },
+      {
+        "nameWeidu": "客户姓名",
+        "colspan": 1,
+        "dataX": [
+          "客户2",
+          "客户4"
+        ],
+        "dataY": [
+          {
+            "nameDuliang": "订单数量",
+            "unitDuliang": "个",
+            "dataType": "line",
+            "data_y": [
+              "120",
+              "160"
+            ]
+          },
+          {
+            "nameDuliang": "订单总额",
+            "unitDuliang": "万元",
+            "dataType": "line",
+            "data_y": [
+              "5",
+              "7"
+            ]
+          }
+        ]
+      },
+      {
+        "nameWeidu": "客户姓名",
+        "colspan": 1,
+        "dataX": [
+          "客户1",
+          "客户3"
+        ],
+        "dataY": [
+          {
+            "nameDuliang": "订单数量",
+            "unitDuliang": "个",
+            "dataType": "line",
+            "data_y": [
+              "290",
+              "320"
+            ]
+          },
+          {
+            "nameDuliang": "订单总额",
+            "unitDuliang": "万元",
+            "dataType": "line",
+            "data_y": [
+              "5",
+              "7"
+            ]
+          }
+        ]
+      },
+      {
+        "nameWeidu": "客户姓名",
+        "colspan": 1,
+        "dataX": [
+          "客户2",
+          "客户4"
+        ],
+        "dataY": [
+          {
+            "nameDuliang": "订单数量",
+            "unitDuliang": "个",
+            "dataType": "line",
+            "data_y": [
+              "310",
+              "430"
+            ]
+          },
+          {
+            "nameDuliang": "订单总额",
+            "unitDuliang": "万元",
+            "dataType": "line",
+            "data_y": [
+              "5",
+              "7"
+            ]
+          }
+        ]
+      },
+      {
+        "nameWeidu": "客户姓名",
+        "colspan": 1,
+        "dataX": [
+          "客户1",
+          "客户3"
+        ],
+        "dataY": [
+          {
+            "nameDuliang": "订单数量",
+            "unitDuliang": "个",
+            "dataType": "line",
+            "data_y": [
+              "520",
+              "560"
+            ]
+          },
+          {
+            "nameDuliang": "订单总额",
+            "unitDuliang": "万元",
+            "dataType": "line",
+            "data_y": [
+              "5",
+              "7"
+            ]
+          }
+        ]
+      },
+      {
+        "nameWeidu": "客户姓名",
+        "colspan": 1,
+        "dataX": [
+          "客户2",
+          "客户4"
+        ],
+        "dataY": [
+          {
+            "nameDuliang": "订单数量",
+            "unitDuliang": "个",
+            "dataType": "line",
+            "data_y": [
+              "530",
+              "580"
+            ]
+          },
+          {
+            "nameDuliang": "订单总额",
+            "unitDuliang": "万元",
+            "dataType": "line",
+            "data_y": [
+              "5",
+              "7"
+            ]
+          }
+        ]
+      },
+      {
+        "nameWeidu": "客户姓名",
+        "colspan": 1,
+        "dataX": [
+          "客户1",
+          "客户3"
+        ],
+        "dataY": [
+          {
+            "nameDuliang": "订单数量",
+            "unitDuliang": "个",
+            "dataType": "line",
+            "data_y": [
+              "16",
+              "60"
+            ]
+          },
+          {
+            "nameDuliang": "订单总额",
+            "unitDuliang": "万元",
+            "dataType": "line",
+            "data_y": [
+              "5",
+              "7"
+            ]
+          }
+        ]
+      },
+      {
+        "nameWeidu": "客户姓名",
+        "colspan": 1,
+        "dataX": [
+          "客户2",
+          "客户4"
+        ],
+        "dataY": [
+          {
+            "nameDuliang": "订单数量",
+            "unitDuliang": "个",
+            "dataType": "line",
+            "data_y": [
+              "60",
+              "80"
+            ]
+          },
+          {
+            "nameDuliang": "订单总额",
+            "unitDuliang": "万元",
+            "dataType": "line",
+            "data_y": [
+              "5",
+              "7"
+            ]
+          }
+        ]
+      },
+      {
+        "nameWeidu": "客户姓名",
+        "colspan": 1,
+        "dataX": [
+          "客户1",
+          "客户3"
+        ],
+        "dataY": [
+          {
+            "nameDuliang": "订单数量",
+            "unitDuliang": "个",
+            "dataType": "line",
+            "data_y": [
+              "250",
+              "280"
+            ]
+          },
+          {
+            "nameDuliang": "订单总额",
+            "unitDuliang": "万元",
+            "dataType": "line",
+            "data_y": [
+              "5",
+              "7"
+            ]
+          }
+        ]
+      },
+      {
+        "nameWeidu": "客户姓名",
+        "colspan": 1,
+        "dataX": [
+          "客户2",
+          "客户4"
+        ],
+        "dataY": [
+          {
+            "nameDuliang": "订单数量",
+            "unitDuliang": "个",
+            "dataType": "line",
+            "data_y": [
+              "250",
+              "270"
+            ]
+          },
+          {
+            "nameDuliang": "订单总额",
+            "unitDuliang": "万元",
+            "dataType": "line",
+            "data_y": [
+              "5",
+              "7"
+            ]
+          }
+        ]
+      },
+      {
+        "nameWeidu": "客户姓名",
+        "colspan": 1,
+        "dataX": [
+          "客户1",
+          "客户3"
+        ],
+        "dataY": [
+          {
+            "nameDuliang": "订单数量",
+            "unitDuliang": "个",
+            "dataType": "line",
+            "data_y": [
+              "460",
+              "510"
+            ]
+          },
+          {
+            "nameDuliang": "订单总额",
+            "unitDuliang": "万元",
+            "dataType": "line",
+            "data_y": [
+              "5",
+              "7"
+            ]
+          }
+        ]
+      },
+      {
+        "nameWeidu": "客户姓名",
+        "colspan": 1,
+        "dataX": [
+          "客户2",
+          "客户4"
+        ],
+        "dataY": [
+          {
+            "nameDuliang": "订单数量",
+            "unitDuliang": "个",
+            "dataType": "line",
+            "data_y": [
+              "490",
+              "510"
+            ]
+          },
+          {
+            "nameDuliang": "订单总额",
+            "unitDuliang": "万元",
+            "dataType": "line",
+            "data_y": [
+              "5",
+              "7"
+            ]
+          }
+        ]
+      },
+      {
+        "nameWeidu": "客户姓名",
+        "colspan": 1,
+        "dataX": [
+          "客户1",
+          "客户3"
+        ],
+        "dataY": [
+          {
+            "nameDuliang": "订单数量",
+            "unitDuliang": "个",
+            "dataType": "line",
+            "data_y": [
+              "180",
+              "190"
+            ]
+          },
+          {
+            "nameDuliang": "订单总额",
+            "unitDuliang": "万元",
+            "dataType": "line",
+            "data_y": [
+              "5",
+              "7"
+            ]
+          }
+        ]
+      },
+      {
+        "nameWeidu": "客户姓名",
+        "colspan": 1,
+        "dataX": [
+          "客户2",
+          "客户4"
+        ],
+        "dataY": [
+          {
+            "nameDuliang": "订单数量",
+            "unitDuliang": "个",
+            "dataType": "line",
+            "data_y": [
+              "170",
+              "190"
+            ]
+          },
+          {
+            "nameDuliang": "订单总额",
+            "unitDuliang": "万元",
+            "dataType": "line",
+            "data_y": [
+              "5",
+              "7"
+            ]
+          }
+        ]
+      },
+      {
+        "nameWeidu": "客户姓名",
+        "colspan": 1,
+        "dataX": [
+          "客户1",
+          "客户3"
+        ],
+        "dataY": [
+          {
+            "nameDuliang": "订单数量",
+            "unitDuliang": "个",
+            "dataType": "line",
+            "data_y": [
+              "420",
+              "440"
+            ]
+          },
+          {
+            "nameDuliang": "订单总额",
+            "unitDuliang": "万元",
+            "dataType": "line",
+            "data_y": [
+              "5",
+              "7"
+            ]
+          }
+        ]
+      },
+      {
+        "nameWeidu": "客户姓名",
+        "colspan": 1,
+        "dataX": [
+          "客户2",
+          "客户4"
+        ],
+        "dataY": [
+          {
+            "nameDuliang": "订单数量",
+            "unitDuliang": "个",
+            "dataType": "line",
+            "data_y": [
+              "440",
+              "470"
+            ]
+          },
+          {
+            "nameDuliang": "订单总额",
+            "unitDuliang": "万元",
+            "dataType": "line",
+            "data_y": [
+              "5",
+              "7"
+            ]
+          }
+        ]
+      },
+      {
+        "nameWeidu": "客户姓名",
+        "colspan": 1,
+        "dataX": [
+          "客户1",
+          "客户3"
+        ],
+        "dataY": [
+          {
+            "nameDuliang": "订单数量",
+            "unitDuliang": "个",
+            "dataType": "line",
+            "data_y": [
+              "590",
+              "600"
+            ]
+          },
+          {
+            "nameDuliang": "订单总额",
+            "unitDuliang": "万元",
+            "dataType": "line",
+            "data_y": [
+              "5",
+              "7"
+            ]
+          }
+        ]
+      },
+      {
+        "nameWeidu": "客户姓名",
+        "colspan": 1,
+        "dataX": [
+          "客户2",
+          "客户4"
+        ],
+        "dataY": [
+          {
+            "nameDuliang": "订单数量",
+            "unitDuliang": "个",
+            "dataType": "line",
+            "data_y": [
+              "580",
+              "620"
+            ]
+          },
+          {
+            "nameDuliang": "订单总额",
+            "unitDuliang": "万元",
+            "dataType": "line",
+            "data_y": [
+              "5",
+              "7"
+            ]
+          }
+        ]
+      }
+    ]
+  ]
+}

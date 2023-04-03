@@ -1,0 +1,83 @@
+<div id="myDataSourceBar"  >
+  <span>当前位置：数据模型&nbsp;</span>
+</div>
+<div ng-app="myDataSource" id="myDataSource" ng-controller="myDataSourceController">
+    <div id="mds_searchBox">
+        <label style="margin-left: 20%">数据模型名称：</label>
+        <input type="text" ng-model = "cubename"/>
+        <label>是否显示：</label>
+        <select ng-model="cubeStatus">
+      		<option value="">请选择</option>
+			<option value="1">显示</option>
+			<option value="0">隐藏</option>
+        </select>
+        <br/>
+        <button style="margin-left: 30%" ng-click="cubeglqueryName()">查询</button>
+        <button ng-click="reSet()">重置</button>
+        <!-- <button ui-sref="zztzfx.myDataModelAdd">新增</button> -->
+        <button ng-click="cubeglSyn()">同步</button>
+        <button  ng-click="updateCHN()">列中文维护</button>
+        <!-- ui-sref="zztzfx.myDataSource_Service" -->
+    </div>
+    <hr/>
+	<div  class="xtgl_listDiv normal_blue" ng-init="cubeglqueryName()">
+	    <table>
+	        <thead>
+	        <tr>
+	            <td width="5%">序号</td>
+	            <td width="20%">数据模型英文名</td>
+	            <td width="25%">数据模型中文名</td>
+	            <td width="20%">数据模型描述</td>
+	            <td width="15%">创建日期</td>
+	            <td width="15%">操作</td>
+	        </tr>
+	        </thead>
+	        <tbody>
+	        <!-- <tr class="odd">
+	            <td>1</td>
+	            <td>qq</td>
+	            <td>ww</td>
+	            <td>ww</td>
+	            <td>ee</td>
+	            <td> <a ui-sref="zztzfx.myDataSourceDetail">修改</a>&nbsp;&nbsp; <a>删除</a></td>
+	        </tr>
+	        <tr class="even">
+	            <td>2</td>
+	            <td>rr</td>
+	            <td>tt</td>
+	            <td>yy</td>
+	            <td>uu</td>
+	            <td><a  ui-sref="zztzfx.myDataSourceDetail">修改</a>&nbsp;&nbsp; <a>删除</a></td>
+	        </tr> -->
+	         <tr ng-repeat="cube in cubeList" ng-class="{true: 'normal_blue all_font_color_llG', false: 'light_blue_dl all_font_color_llG'}[($index+1)%2==1]">
+	              <td ng-bind="$index+1">1</td>
+	              <!-- <td title = "{{cube.cubeId}}" ng-bind="cube.cubeId"></td> -->
+	              <td title = "{{cube.cubeName}}" ng-bind="cube.cubeName"></td>
+	              <td title = "{{cube.cubeNameCn}}" ng-bind="cube.cubeNameCn"></td>
+	              <td title = "{{cube.cubeDescription}}" ng-bind="cube.cubeDescription"></td>
+	              <td >{{cube.cubeDate|date:'yyyy-MM-dd'}}</td>
+	              <td> 
+	              		<a ng-click="cubeglEditName(cube.cubeId)">修改</a>&nbsp;&nbsp; 
+	              		<!-- <a ng-click="viewCube(cube.cubeId,cube.cubeNameCn)" >查看</a>&nbsp;&nbsp;
+	              		<a ng-click="synCube(cube.cubeName)" >同步</a>&nbsp;&nbsp;  --> 
+	             		<!-- <a ng-click="cubegldel(cube.cubeId)">删除</a> -->
+	             		
+	             		
+	             		
+	             		<!-- <select  goto-pages>
+				  			<option value="请选择">请选择</option>
+				  			<option  value="查看">查看</option>
+				  			<option ng-if="cube.cubeStatus==1" value="删除">删除</option>
+				  			<option ng-if="cube.cubeStatus==0" value="恢复">恢复</option>
+					  </select> -->
+					  
+	              </td>
+	         </tr>
+	        </tbody>
+	    </table>
+			<div class="pager">
+	            <div class="blank"></div>
+	            <pager page-count="pageCountC" current-page="currentPageC" on-page-change="onPageChangeC()"></pager>
+	        </div>
+	</div>
+</div>

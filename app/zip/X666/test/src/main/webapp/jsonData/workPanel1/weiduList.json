@@ -1,0 +1,13 @@
+{
+  "success":true,
+  "code":1000,
+  "msg":"操作成功",
+  "title":"成功",
+  "data":{
+    "dimTableName":"DIM_CUSTOM",
+    "dimColumn":"CUSTOM_NAME",
+    "columnNameCn":"客户姓名",
+    "resultSet":["客户1","客户2","客户3","客户4","客户5","客户6","客户7","客户8","客户9","客户10","客户11","客户12","客户13","客户14","客户15"]
+  }
+}
+

@@ -1,0 +1,122 @@
+[ {
+  "id" : 234,
+  "parentId" : 0,
+  "name" : "在线查询   ",
+  "sort" : 1,
+  "target" : "0_2",
+  "showFlag" : 1
+}, {
+  "id" : 236,
+  "parentId" : 234,
+  "name" : "宏观经济库查询",
+  "sort" : 2,
+  "target" : "0_2_2",
+  "showFlag" : 1
+}, {
+  "id" : 237,
+  "parentId" : 236,
+  "name" : "经济主题",
+  "sort" : 3,
+  "target" : "0_2_2_1",
+  "showFlag" : 1
+}, {
+  "id" : 240,
+  "parentId" : 237,
+  "name" : "税收",
+  "sort" : 4,
+  "target" : "0_2_2_1_2_final",
+  "showFlag" : 1
+}, {
+  "id" : 239,
+  "parentId" : 237,
+  "name" : "国民经济",
+  "sort" : 4,
+  "target" : "0_2_2_1_1",
+  "showFlag" : 1
+}, {
+  "id" : 242,
+  "parentId" : 239,
+  "name" : "吴中区生产总值",
+  "sort" : 5,
+  "target" : "0_2_2_1_1_1_final",
+  "showFlag" : 1
+}, {
+  "id" : 235,
+  "parentId" : 234,
+  "name" : "法人库信息查询",
+  "sort" : 2,
+  "href" : "onlineQuery/getCorporationList",
+  "target" : "0_2_1_final",
+  "showFlag" : 1,
+  "permission" : "sys:corporation:view"
+}, {
+  "id" : 1,
+  "parentId" : 0,
+  "name" : "管理",
+  "sort" : 1,
+  "target" : "0_1",
+  "showFlag" : 1
+}, {
+  "id" : 233,
+  "parentId" : 1,
+  "name" : "33",
+  "sort" : 2,
+  "href" : "33",
+  "target" : "0_1_8_final",
+  "showFlag" : 0,
+  "permission" : "33"
+}, {
+  "id" : 212,
+  "parentId" : 1,
+  "name" : "cube信息管理",
+  "sort" : 2,
+  "href" : "cube/getCubeByCondition",
+  "target" : "0_1_7",
+  "showFlag" : 1,
+  "permission" : "sys:cube:view"
+}, {
+  "id" : 213,
+  "parentId" : 212,
+  "name" : "cube同步",
+  "sort" : 3,
+  "href" : "cube/synCube",
+  "target" : "0_1_7_1_final",
+  "showFlag" : 0,
+  "permission" : "sys:cube:synCube"
+}, {
+  "id" : 5,
+  "parentId" : 1,
+  "name" : "组织管理",
+  "sort" : 2,
+  "href" : "organization",
+  "target" : "0_1_6_final",
+  "showFlag" : 1,
+  "permission" : "sys:organization:view"
+}, {
+  "id" : 230,
+  "parentId" : 1,
+  "name" : "数据分析",
+  "sort" : 2,
+  "href" : "workTable",
+  "target" : "0_1_5_final",
+  "showFlag" : 1,
+  "permission" : "sys:workTable:view"
+}, {
+  "id" : 50,
+  "parentId" : 1,
+  "name" : "日志管理",
+  "sort" : 2,
+  "href" : "log",
+  "target" : "0_1_4",
+  "showFlag" : 1,
+  "permission" : "sys:log:view"
+}, {
+  "id" : 111,
+  "parentId" : 50,
+  "name" : "删除日志",
+  "sort" : 3,
+  "href" : "log",
+  "target" : "0_1_4_1_final",
+  "showFlag" : 1,
+  "permission" : "sys:log:delete"
+}]

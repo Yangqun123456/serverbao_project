@@ -1,0 +1,48 @@
+<div id="myDataSourceBar">
+    <span>当前位置：数据模型&nbsp;>&nbsp;详情修改</span>
+</div>
+<div id="myDataSource" ng-controller="cubeEditCtrl">
+    <table class="myDataSourceDetail">
+        <!-- <tr>
+            <td width="15%" class="tableH ">数据模型名称：</td>
+            <td width="35%" class=""></td>
+            <td width="15%" class="tableH ">数据模型中文名：</td>
+            <td width="35%" class=""><input  type="text"  value=""/></td>
+        </tr>
+        <tr>
+
+            <td width="15%" class="tableH ">描述：</td>
+            <td width="35%" class=""><input  type="text" value=""/></td>
+            <td width="15%" class="tableH ">数据模型状态：</td>
+            <td width="35%" class="">
+                <select >
+                    <option value="1">显示</option>
+                    <option value="0">隐藏</option>
+                </select>
+            </td>
+        </tr> -->
+         <tr>
+                <td width="15%" class="tableH light_blue_dl">数据模型名称：</td>
+                <td width="35%" class="tableT normal_blue">{{cube.cubeName}}</td>
+                <td width="15%" class="tableH light_blue_dl">数据模型中文名：</td>
+                <td width="35%" class="tableT normal_blue"><input   class="normal_blue all_font_color_llG" type="text" ng-model=cube.cubeNameCn value="{{cube.cubeNameCn}}"/></td>
+            </tr>
+            <tr>
+                
+                <td width="15%" class="tableH light_blue_dl">描述：</td>
+                <td width="35%" class="tableT normal_blue"><input   class="normal_blue all_font_color_llG" type="text" ng-model=cube.cubeDescription value="{{cube.cubeDescription}}"/></td>
+                <td width="15%" class="tableH light_blue_dl">数据模型状态：</td>
+                <td width="35%" class="tableT normal_blue">
+                <select   class="normal_blue all_font_color_llG" ng-model="cube.cubeStatus">  
+					<option value="1">显示</option>
+					<option value="0">隐藏</option>
+				</select>
+				</td>
+            </tr>
+    </table>
+    <br/>
+    <button style="margin-left:40%;"  ng-click="updateCubeInfo()">保存</button>
+    <button  ui-sref="zztzfx.myDataSource">返回</button> 
+    <!-- <button style="margin-left:40%;">保存</button>
+    <button  ui-sref="zztzfx.myDataSource">返回</button> -->
+</div>

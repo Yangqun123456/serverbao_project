@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html ng-app="loginApp">
+<head>
+    <meta name="keywords" content="九次方,JAP,大数据,智能,分析"/>
+    <meta name="description" content="九次方大数据智能分析平台"/>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=Edge，chrome=1">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>九次方大数据智能分析平台</title>
+    <!--Font图形样式-->
+    <link href="scripts/font-awesome-4.5.0/css/font-awesome.min.css" type="text/css" rel="stylesheet"/>
+
+    <!--项目样式-->
+    <link href="css/zztzfx/header_zztzfx.css" type="text/css" rel="stylesheet"/>
+    <link href="css/zztzfx/common.css" type="text/css" rel="stylesheet"/>
+    <link href="css/login.css" type="text/css" rel="stylesheet" />
+
+    <!--jQuery-->
+    <script src="scripts/jquery-ui-1.10.4.custom/js/jquery-1.10.2.js"></script>
+
+
+
+</head>
+<body class="overflowH"  style="background: #F2F2F2">
+	<div id = "isLogonHtmlFlag" style＝"display:none;"></div>
+    <div class="width100 height100 all_font_colorW">
+        <!--页头开始-->
+        <div id="topMenu_zztz" class="color_red font_colorW" style="height: 9%">
+            <div id="logo_zztz" class="floatL">
+                <img src="img/zztzfx/logo.png"/>
+                <h1><strong>九次方大数据智能分析平台</strong></h1>
+                <span>V1.0</span>
+            </div>
+
+        </div>
+        <!--页头结束-->
+        <div id="loginDiv" class="width100">
+            <div id="loginBox" class="color_red">
+                <p class="font_colorW">九次方大数据智能分析平台账户登录</p>
+                <br/>
+                <div class="login_textBox">
+                    <span class="fa fa-user"></span><input id="username" type="text" value=""  onkeydown="enterLogin(event);"/>
+                </div><span id="errorName" style="font-family:华文中宋; color:blue;">用户名不能为空</span>
+                <br/>
+                <div class="login_textBox">
+                    <span class="fa fa-lock"></span><input id="password" type="password" value=""  onkeydown="enterLogin(event);"/>
+                </div><span  id="errorPassword" style="font-family:华文中宋; color:blue;" >密码不能为空</span>
+                <br/>
+                <button id="loginButton">登录</button>
+            </div>
+        </div>
+
+    </div>
+
+
+</body>
+
+<script type="text/javascript">
+$('#errorName').hide();
+$('#errorPassword').hide();
+    var ctx = function() {
+        var path = window.location.href;
+        var pathName = window.location.pathname;
+        var hostPath = path.substring(0, path.indexOf(pathName))
+        var projectName = pathName.substring(0, pathName.substring(1).indexOf('/') + 1);
+        return (hostPath + projectName);
+    }
+    $(document).ready(function () {
+        $("#loginButton").click(function () {
+            //入参
+            var nameOrpassword = true;
+            if($("#username").val().length < 1) {  
+               $('#errorName').show();
+               nameOrpassword = false;
+            } else {  
+               $('#errorName').hide();  
+            }
+            if($("#password").val().length < 1) {  
+                $('#errorPassword').show(); 
+                nameOrpassword = false;
+            } else {  
+                $('#errorPassword').hide();  
+            }
+            if(!nameOrpassword){
+            	return;
+            }
+            var user={
+                "username":$("#username").val(),
+                "password":$("#password").val()
+            };
+            console.log("before:"+JSON.stringify(user));
+            //ajax请求后台
+            $.ajax({
+                type : "POST",
+                dataType: "json",     //类型
+                data:user ,
+                url : ctx()+"/login",
+                success : function (data) {
+                	if(data==false){
+                		alert("您输入的用户名或密码错误！");
+                	}else{
+                		console.log("After:"+JSON.stringify(data));
+                        window.location.href=ctx();
+                	}
+                },
+                error:function(data){
+                    console.log("Error:"+JSON.stringify(data));
+                	alert("您输入的用户名或密码错误！");
+                	window.location.href=ctx();
+                }
+            });
+
+        });
+        $("#loginClear").click(function () {
+            $("#username").val(""); 
+            $("#password").val("");
+        });
+    })
+    
+    function enterLogin(e) { 
+    	if (!e) 
+    	e = window.event; 
+    	if ((e.keyCode || e.which) == 13) { 
+    	$("#loginButton").click(); 
+    	} 
+    	};
+</script>
+</html>

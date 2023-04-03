@@ -1,0 +1,102 @@
+{
+  "success": true,
+  "code": 1000,
+  "msg": "操作成功",
+  "title": "成功",
+  "data": {
+    "listDim": [
+      {
+        "tableName": "dim_table1",
+        "tableNameCn": "维度表名称1",
+        "data": [
+          {
+            "id": "1",
+            "columnName": "dim_column1",
+            "columnNameCn": "维度列1",
+            "dataName": "orac",
+            "columnOrder": "列顺序1",
+            "nextFlag": null
+          },
+          {
+            "id": "2",
+            "columnName": "dim_column2",
+            "columnNameCn": "维度列2",
+            "dataName": "orac",
+            "columnOrder": "列顺序2",
+            "nextFlag": null
+          }
+        ]
+      },
+      {
+        "tableName": "dim_table2",
+        "tableNameCn": "维度表名称2",
+        "data": [
+          {
+            "id": "3",
+            "columnName": "dim_column3",
+            "columnNameCn": "维度列3",
+            "dataName": "orac",
+            "columnOrder": "列顺序3",
+            "nextFlag": "2"
+          },
+          {
+            "id": "4",
+            "columnName": "dim_column4",
+            "columnNameCn": "维度列4",
+            "dataName": "orac",
+            "columnOrder": "列顺序4",
+            "nextFlag": "3"
+          },
+          {
+            "id": "7",
+            "columnName": "dim_column7",
+            "columnNameCn": "维度列7",
+            "dataName": "orac",
+            "columnOrder": "列顺序7",
+            "nextFlag": "3"
+          },
+          {
+            "id": "8",
+            "columnName": "dim_column8",
+            "columnNameCn": "维度列8",
+            "dataName": "orac",
+            "columnOrder": "列顺序8",
+            "nextFlag": "3"
+          },
+          {
+            "id": "9",
+            "columnName": "dim_column9",
+            "columnNameCn": "维度列9",
+            "dataName": "orac",
+            "columnOrder": "列顺序9",
+            "nextFlag": "3"
+          },
+          {
+            "id": "10",
+            "columnName": "dim_column10",
+            "columnNameCn": "维度列10",
+            "dataName": "orac",
+            "columnOrder": "列顺序10",
+            "nextFlag": "1"
+          }
+        ]
+      }
+    ],
+    "listFact": [
+      {
+        "id": "5",
+        "columnName": "fact_column1",
+        "columnNameCn": "度量列1",
+        "tableName": "fact_table1",
+        "dataName": "orac"
+      },
+      {
+        "id": "6",
+        "columnName": "fact_column2",
+        "columnNameCn": "度量列2",
+        "tableName": "fact_table2",
+        "dataName": "orac2"
+      }
+    ]
+  }
+}

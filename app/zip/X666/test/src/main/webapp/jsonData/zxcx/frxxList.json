@@ -1,0 +1,44 @@
+{
+  "pageNum":1,
+  "pageSize":2,
+  "pages" : 2,
+  "total" : 5,
+  "list" : [ {
+    "baseinfoId" : "01334c65-8c0e-43cf-81d3-612aed1ce0ad",
+    "orgCode" : "321002000189216",
+    "corpName" : "扬州吴恒林房产信息咨询服务中心",
+    "regCode" : "321002000189216",
+    "orgTypeName" : "",
+    "legalPerson" : "吴恒林",
+    "homeInfo" : "沙头镇施沙路3号"
+  },
+    {
+      "baseinfoId" : "01334c65-8c0e-43cf",
+      "orgCode" : "321002000189216",
+      "corpName" : "扬州吴恒林房产信息咨询服务中心",
+      "regCode" : "321002000189216",
+      "orgTypeName" : "",
+      "legalPerson" : "吴恒林",
+      "homeInfo" : "沙头镇施沙路3号"
+    },
+
+    {
+      "baseinfoId" : "01334c65-8c0e-43cf-",
+      "orgCode" : "321002000189216",
+      "corpName" : "扬州吴恒林房产信息咨询服务中心",
+      "regCode" : "321002000189216",
+      "orgTypeName" : "",
+      "legalPerson" : "吴恒林",
+      "homeInfo" : "沙头镇施沙路3号"
+    },
+    {
+      "baseinfoId" : "81d3-612aed1ce0ad",
+      "orgCode" : "321002000189216",
+      "corpName" : "扬州吴恒林房产信息咨询服务中心",
+      "regCode" : "321002000189216",
+      "orgTypeName" : "",
+      "legalPerson" : "吴恒林",
+      "homeInfo" : "沙头镇施沙路3号"
+    }
+    ]
+}

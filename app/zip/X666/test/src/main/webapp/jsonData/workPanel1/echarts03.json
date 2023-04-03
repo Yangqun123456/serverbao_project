@@ -1,0 +1,380 @@
+[
+  {
+    "nameWeidu": "A",
+    "valueName": "a1",
+    "data": [
+      {
+        "nameWeidu": "B",
+        "valueName": "b1",
+        "data": [{
+          "nameWeidu": "C",
+          "dataX":["c1","c2","c3","c4","c5"],
+          "dataY":[{
+            "nameDuliang":"D",
+            "unitDuliang":"元",
+            "dataType":"scatter",
+            "data_y":[1,2,3,4,5]
+          },{
+            "nameDuliang":"E",
+            "unitDuliang":"元",
+            "dataType":"scatter",
+            "data_y":[3,4,5,8,9]
+          },{
+            "nameDuliang":"F",
+            "unitDuliang":"元",
+            "dataType":"scatter",
+            "data_y":[6,1,2,5,4]
+          }]
+        }]
+      },
+      {
+        "nameWeidu": "B",
+        "valueName": "b2",
+        "data": [{
+          "nameWeidu": "C",
+          "dataX":["c1","c2","c3","c4","c5"],
+          "dataY":[{
+            "nameDuliang":"D",
+            "unitDuliang":"元",
+            "dataType":"scatter",
+            "data_y":[1,2,3,4,5]
+          },{
+            "nameDuliang":"E",
+            "unitDuliang":"元",
+            "dataType":"scatter",
+            "data_y":[3,4,5,8,9]
+          },{
+            "nameDuliang":"F",
+            "unitDuliang":"元",
+            "dataType":"scatter",
+            "data_y":[6,1,2,5,4]
+          }]
+        }]
+      },
+      {
+        "nameWeidu": "B",
+        "valueName": "b3",
+        "data": [{
+          "nameWeidu": "C",
+          "dataX":["c1","c2","c3","c4","c5"],
+          "dataY":[{
+            "nameDuliang":"D",
+            "unitDuliang":"元",
+            "dataType":"scatter",
+            "data_y":[1,2,3,4,5]
+          },{
+            "nameDuliang":"E",
+            "unitDuliang":"元",
+            "dataType":"scatter",
+            "data_y":[3,4,5,8,9]
+          },{
+            "nameDuliang":"F",
+            "unitDuliang":"元",
+            "dataType":"scatter",
+            "data_y":[6,1,2,5,4]
+          }]
+        }]
+      },
+      {
+        "nameWeidu": "B",
+        "valueName": "b4",
+        "data": [{
+          "nameWeidu": "C",
+          "dataX":["c1","c2","c3","c4","c5"],
+          "dataY":[{
+            "nameDuliang":"D",
+            "unitDuliang":"元",
+            "dataType":"scatter",
+            "data_y":[1,2,3,4,5]
+          },{
+            "nameDuliang":"E",
+            "unitDuliang":"元",
+            "dataType":"scatter",
+            "data_y":[3,4,5,8,9]
+          },{
+            "nameDuliang":"F",
+            "unitDuliang":"元",
+            "dataType":"scatter",
+            "data_y":[6,1,2,5,4]
+          }]
+        }]
+      },
+      {
+        "nameWeidu": "B",
+        "valueName": "b5",
+        "data": [{
+          "nameWeidu": "C",
+          "dataX":["c1","c2","c3","c4","c5"],
+          "dataY":[{
+            "nameDuliang":"D",
+            "unitDuliang":"元",
+            "dataType":"scatter",
+            "data_y":[1,2,3,4,5]
+          },{
+            "nameDuliang":"E",
+            "unitDuliang":"元",
+            "dataType":"scatter",
+            "data_y":[3,4,5,8,9]
+          },{
+            "nameDuliang":"F",
+            "unitDuliang":"元",
+            "dataType":"scatter",
+            "data_y":[6,1,2,5,4]
+          }]
+        }]
+      }
+    ]
+  },
+  {
+    "nameWeidu": "A",
+    "valueName": "a2",
+    "data": [
+      {
+        "nameWeidu": "B",
+        "valueName": "b1",
+        "data": [{
+          "nameWeidu": "C",
+          "dataX":["c1","c2","c3","c4","c5"],
+          "dataY":[{
+            "nameDuliang":"D",
+            "unitDuliang":"元",
+            "dataType":"scatter",
+            "data_y":[1,2,3,4,5]
+          },{
+            "nameDuliang":"E",
+            "unitDuliang":"元",
+            "dataType":"scatter",
+            "data_y":[3,4,5,8,9]
+          },{
+            "nameDuliang":"F",
+            "unitDuliang":"元",
+            "dataType":"scatter",
+            "data_y":[6,1,2,5,4]
+          }]
+        }]
+      },
+      {
+        "nameWeidu": "B",
+        "valueName": "b2",
+        "data": [{
+          "nameWeidu": "C",
+          "dataX":["c1","c2","c3","c4","c5"],
+          "dataY":[{
+            "nameDuliang":"D",
+            "unitDuliang":"元",
+            "dataType":"scatter",
+            "data_y":[1,2,3,4,5]
+          },{
+            "nameDuliang":"E",
+            "unitDuliang":"元",
+            "dataType":"scatter",
+            "data_y":[3,4,5,8,9]
+          },{
+            "nameDuliang":"F",
+            "unitDuliang":"元",
+            "dataType":"scatter",
+            "data_y":[6,1,2,5,4]
+          }]
+        }]
+      },
+      {
+        "nameWeidu": "B",
+        "valueName": "b3",
+        "data": [{
+          "nameWeidu": "C",
+          "dataX":["c1","c2","c3","c4","c5"],
+          "dataY":[{
+            "nameDuliang":"D",
+            "unitDuliang":"元",
+            "dataType":"scatter",
+            "data_y":[1,2,3,4,5]
+          },{
+            "nameDuliang":"E",
+            "unitDuliang":"元",
+            "dataType":"scatter",
+            "data_y":[3,4,5,8,9]
+          },{
+            "nameDuliang":"F",
+            "unitDuliang":"元",
+            "dataType":"scatter",
+            "data_y":[6,1,2,5,4]
+          }]
+        }]
+      },
+      {
+        "nameWeidu": "B",
+        "valueName": "b4",
+        "data": [{
+          "nameWeidu": "C",
+          "dataX":["c1","c2","c3","c4","c5"],
+          "dataY":[{
+            "nameDuliang":"D",
+            "unitDuliang":"元",
+            "dataType":"scatter",
+            "data_y":[1,2,3,4,5]
+          },{
+            "nameDuliang":"E",
+            "unitDuliang":"元",
+            "dataType":"scatter",
+            "data_y":[3,4,5,8,9]
+          },{
+            "nameDuliang":"F",
+            "unitDuliang":"元",
+            "dataType":"scatter",
+            "data_y":[6,1,2,5,4]
+          }]
+        }]
+      },
+      {
+        "nameWeidu": "B",
+        "valueName": "b5",
+        "data": [{
+          "nameWeidu": "C",
+          "dataX":["c1","c2","c3","c4","c5"],
+          "dataY":[{
+            "nameDuliang":"D",
+            "unitDuliang":"元",
+            "dataType":"scatter",
+            "data_y":[1,2,3,4,5]
+          },{
+            "nameDuliang":"E",
+            "unitDuliang":"元",
+            "dataType":"scatter",
+            "data_y":[3,4,5,8,9]
+          },{
+            "nameDuliang":"F",
+            "unitDuliang":"元",
+            "dataType":"scatter",
+            "data_y":[6,1,2,5,4]
+          }]
+        }]
+      }
+    ]
+  },
+  {
+    "nameWeidu": "A",
+    "valueName": "a3",
+    "data": [
+      {
+        "nameWeidu": "B",
+        "valueName": "b1",
+        "data": [{
+          "nameWeidu": "C",
+          "dataX":["c1","c2","c3","c4","c5"],
+          "dataY":[{
+            "nameDuliang":"D",
+            "unitDuliang":"元",
+            "dataType":"scatter",
+            "data_y":[1,2,3,4,5]
+          },{
+            "nameDuliang":"E",
+            "unitDuliang":"元",
+            "dataType":"scatter",
+            "data_y":[3,4,5,8,9]
+          },{
+            "nameDuliang":"F",
+            "unitDuliang":"元",
+            "dataType":"scatter",
+            "data_y":[6,1,2,5,4]
+          }]
+        }]
+      },
+      {
+        "nameWeidu": "B",
+        "valueName": "b2",
+        "data": [{
+          "nameWeidu": "C",
+          "dataX":["c1","c2","c3","c4","c5"],
+          "dataY":[{
+            "nameDuliang":"D",
+            "unitDuliang":"元",
+            "dataType":"scatter",
+            "data_y":[1,2,3,4,5]
+          },{
+            "nameDuliang":"E",
+            "unitDuliang":"元",
+            "dataType":"scatter",
+            "data_y":[3,4,5,8,9]
+          },{
+            "nameDuliang":"F",
+            "unitDuliang":"元",
+            "dataType":"scatter",
+            "data_y":[6,1,2,5,4]
+          }]
+        }]
+      },
+      {
+        "nameWeidu": "B",
+        "valueName": "b3",
+        "data": [{
+          "nameWeidu": "C",
+          "dataX":["c1","c2","c3","c4","c5"],
+          "dataY":[{
+            "nameDuliang":"D",
+            "unitDuliang":"元",
+            "dataType":"scatter",
+            "data_y":[1,2,3,4,5]
+          },{
+            "nameDuliang":"E",
+            "unitDuliang":"元",
+            "dataType":"scatter",
+            "data_y":[3,4,5,8,9]
+          },{
+            "nameDuliang":"F",
+            "unitDuliang":"元",
+            "dataType":"scatter",
+            "data_y":[6,1,2,5,4]
+          }]
+        }]
+      },
+      {
+        "nameWeidu": "B",
+        "valueName": "b4",
+        "data": [{
+          "nameWeidu": "C",
+          "dataX":["c1","c2","c3","c4","c5"],
+          "dataY":[{
+            "nameDuliang":"D",
+            "unitDuliang":"元",
+            "dataType":"scatter",
+            "data_y":[1,2,3,4,5]
+          },{
+            "nameDuliang":"E",
+            "unitDuliang":"元",
+            "dataType":"scatter",
+            "data_y":[3,4,5,8,9]
+          },{
+            "nameDuliang":"F",
+            "unitDuliang":"元",
+            "dataType":"scatter",
+            "data_y":[6,1,2,5,4]
+          }]
+        }]
+      },
+      {
+        "nameWeidu": "B",
+        "valueName": "b5",
+        "data": [{
+          "nameWeidu": "C",
+          "dataX":["c1","c2","c3","c4","c5"],
+          "dataY":[{
+            "nameDuliang":"D",
+            "unitDuliang":"元",
+            "dataType":"scatter",
+            "data_y":[1,2,3,4,5]
+          },{
+            "nameDuliang":"E",
+            "unitDuliang":"元",
+            "dataType":"scatter",
+            "data_y":[3,4,5,8,9]
+          },{
+            "nameDuliang":"F",
+            "unitDuliang":"元",
+            "dataType":"scatter",
+            "data_y":[6,1,2,5,4]
+          }]
+        }]
+      }
+    ]
+  }
+]

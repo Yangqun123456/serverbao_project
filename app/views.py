@@ -259,7 +259,6 @@ def costAnalyzer(request):
     @param code_zip Binary zip文件
     @param email String 用户邮箱
 
-    !未测试
 '''
 
 
@@ -272,9 +271,9 @@ def addCodeOrganization(request):
         else:
             compressed_file = request.FILES.get('code_zip')
             if compressed_file:
-                data = compressed_file.read()
+                zipDownLoad(compressed_file.read(), './app/zip/'+request.POST.get('project_id'))
                 compressed_file_obj = codeAnalyze(project_id=request.POST.get(
-                    'project_id'), name=request.POST.get('name'), email=request.POST.get('email'), code_zip=data)
+                    'project_id'), name=request.POST.get('name'), email=request.POST.get('email'), code_zip='./app/zip/'+request.POST.get('project_id')+compressed_file.name)
                 compressed_file_obj.save()
                 return JsonResponse({'status': 0, 'message': '新建项目源码成功'}, json_dumps_params={'ensure_ascii': False})
             else:
@@ -287,7 +286,6 @@ def addCodeOrganization(request):
     @param code_zip Binary zip文件
     @param email String 用户邮箱
 
-    !未测试
 '''
 
 
@@ -300,7 +298,8 @@ def updateCodeOrganization(request):
         else:
             compressed_file = request.FILES.get('code_zip')
             if compressed_file:
-                compressed_file_obj.code_zip = compressed_file.read()
+                zipDownLoad(compressed_file.read(), './app/zip/'+request.POST.get('project_id'))
+                compressed_file_obj.code_zip = './app/zip/'+request.POST.get('project_id')
                 compressed_file_obj.save()
                 return JsonResponse({'status': 0, 'message': '更新项目源码成功'}, json_dumps_params={'ensure_ascii': False})
             else:
@@ -321,9 +320,8 @@ def codeAnalyzer(request):
         if compressed_file_obj is None:
             return JsonResponse({'status': 1, 'message': '项目不存在'}, json_dumps_params={'ensure_ascii': False})
         else:
-            zipDownLoad(compressed_file_obj, './app/zip')  # 解压zip文件
             codeCounter = CodeCounterAnalyze()
-            codeCounter.count('./app/zip')
+            codeCounter.count(compressed_file_obj.code_zip)
             codeSimList = codeCounter.codeSimLines(
                 './app/resource/codeResource.java')
             # 保存分析结果至数据库
@@ -369,5 +367,5 @@ def selectCodeOrganization(request):
 def selectALLCodeOrganization(request):
     if request.method == 'GET':
         allCode = list(codeAnalyze.objects.filter(email=request.GET.get('email')).values('project_id', 'name', 'code_lines', 'original_code_lines',
-                                                                                          'file_count', 'original_file_count', 'filename_list', 'codeSimList').all())
+                                                                                         'file_count', 'original_file_count', 'filename_list', 'codeSimList').all())
         return JsonResponse({'status': 0, 'message': '查询项目成功', 'data': allCode}, json_dumps_params={'ensure_ascii': False})

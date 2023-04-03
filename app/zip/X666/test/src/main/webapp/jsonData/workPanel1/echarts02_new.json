@@ -1,0 +1,92 @@
+[
+  {
+    "nameWeidu": "A",
+    "valueName": "a1",
+    "data": [
+      {
+        "nameWeidu": "B",
+        "dataX": ["b1","b4","b5"],
+        "dataY": [
+          {
+            "nameDuliang": "C",
+            "unitDuliang": "百万元",
+            "dataType": "line",
+            "data_y": [1, 2,5]
+          },
+          {
+            "nameDuliang": "E",
+            "unitDuliang": "万个",
+            "dataType": "line",
+            "data_y": [5,8,9]
+          },
+          {
+            "nameDuliang": "F",
+            "unitDuliang": "千万元",
+            "dataType": "line",
+            "data_y": [2, 1,5]
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "nameWeidu": "A",
+    "valueName": "a2",
+    "data": [
+      {
+        "nameWeidu": "B",
+        "dataX":["b3","b4","b5"],
+        "dataY": [
+          {
+            "nameDuliang": "C",
+            "unitDuliang": "百万元",
+            "dataType": "line",
+            "data_y": [1,4,5]
+          },
+          {
+            "nameDuliang": "E",
+            "unitDuliang": "万个",
+            "dataType": "line",
+            "data_y": [3, 4,9]
+          },
+          {
+            "nameDuliang": "F",
+            "unitDuliang": "千万元",
+            "dataType": "line",
+            "data_y": [2,2,5]
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "nameWeidu": "A",
+    "valueName": "a4",
+    "data": [
+      {
+        "nameWeidu": "B",
+        "dataX": ["b1","b5"],
+        "dataY": [
+          {
+            "nameDuliang": "C",
+            "unitDuliang": "百万元",
+            "dataType": "line",
+            "data_y": [4,5]
+          },
+          {
+            "nameDuliang": "E",
+            "unitDuliang": "万个",
+            "dataType": "line",
+            "data_y": [8,9]
+          },
+          {
+            "nameDuliang": "F",
+            "unitDuliang": "千万元",
+            "dataType": "line",
+            "data_y": [2, 1]
+          }
+        ]
+      }
+    ]
+  }
+]

@@ -1,0 +1,20 @@
+[
+  {
+    "id": 1,
+    "officeId": 1,
+    "name": "超级管理员",
+    "enname": "SU",
+    "roleType": 0,
+    "sysFlag": 11,
+    "status": 1
+  },
+  {
+    "id": 26,
+    "officeId": 0,
+    "name": "5252523535",
+    "roleType": 1,
+    "sysFlag": 0,
+    "status": 0
+  }
+
+]
